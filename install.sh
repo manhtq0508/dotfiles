@@ -54,11 +54,12 @@ curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
 source $HOME/.ghcup/env # Load ghcup 
 if command -v "stack" > /dev/null; then
 	echo -e "\e[32m [ INFO ] Stack found. Build Xmonad. \e[0m"
+ 	cd $HOME/.config/xmonad
 	stack init $HOME/.config/xmonad
 	stack install $HOME/.config/xmonad
 else 
        echo -e "\e[31m Stack not found. Try using new shell. \e[0m"
-       bash -c "source $HOME/.ghcup/env && stack init $HOME/.config/xmonad && stack install $HOME/.config/xmonad"
+       bash -c "source $HOME/.ghcup/env && cd $HOME/.config/xmonad && stack init $HOME/.config/xmonad && stack install $HOME/.config/xmonad"
 fi
 
 source $HOME/.bashrc
@@ -80,7 +81,7 @@ echo -e "\e[32m [ INFO ] Oh-my-zsh \e[0m"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
-echo -e "\e[32m [ INFO ] Ibus-bamboo \e[0m"
+echo -e "\e[32m [ INFO ] Ibus-Bamboo \e[0m"
 ibus-daemon &
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/BambooEngine/ibus-bamboo/master/archlinux/install.sh)"
 
