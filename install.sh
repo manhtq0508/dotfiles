@@ -53,7 +53,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
 
 source $HOME/.ghcup/env # Load ghcup 
 if command -v "stack" > /dev/null; then
-	echo -e "\[32m [ INFO ] Stack found. Build Xmonad. \e[0m"
+	echo -e "\e[32m [ INFO ] Stack found. Build Xmonad. \e[0m"
 	stack init $HOME/.config/xmonad
 	stack install $HOME/.config/xmonad
 else 
