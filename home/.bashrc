@@ -16,7 +16,7 @@ PS1='[\u@\h \W]\$ '
 eval "$(thefuck --alias)"
 eval "$(zoxide init bash)"
 
-[ -f "$HOME.ghcup/env" ] && . "$HOME/.ghcup/env" # ghcup-env
+[ -f "$HOME/.ghcup/env" ] && . "$HOME/.ghcup/env" # ghcup-env
 
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
