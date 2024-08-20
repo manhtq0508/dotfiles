@@ -5,11 +5,15 @@ fi
 
 echo "[*] Install package"
 sudo pacman -Syu
-sudo pacman -S --needed neofetch ripgrep fzf git base-devel bat dbus eza feh firefox \
-	       github-cli kitty xf86-input-libinput xorg-input network-manager-applet \
-	       nodejs npm picom polybar pulseaudio pulseaudio-bluetooth python-pynvim \
-	       rofi xdg-utils zoxide zsh noto-fonts-emoji ttf-jetbrains-mono-nerd \
-	       ibus thefuck xclip
+sudo pacman -S --needed \
+neofetch ripgrep fzf git base-devel bat dbus \
+eza feh firefox github-cli kitty \
+xf86-input-libinput xorg-input \
+network-manager-applet nodejs npm picom \
+polybar pulseaudio pulseaudio-bluetooth \
+python-pynvim rofi xdg-utils zoxide zsh \
+noto-fonts-emoji ttf-jetbrains-mono-nerd \
+ibus thefuck xclip
 
 echo "[*] Copy dotfiles and config files"
 if [ ! -e "$HOME/.config" ]; then
@@ -33,7 +37,7 @@ cd $HOME/dotfiles
 sudo rm -rf $HOME/yay $HOME/go
 
 echo "[*] Requirements of xmonad (Build from source)"
-sudo pacman -S \
+sudo pacman -S --needed \
 git \
 xorg-server xorg-apps xorg-xinit xorg-xmessage \
 libx11 libxft libxinerama libxrandr libxss \
