@@ -21,7 +21,7 @@ fi
 cp -rf config/* $HOME/.config/
 cp -rf home/.* $HOME
 
-echo -e "\e32m [ INFO ] Config touchpad (natural scrolling, tap, etc) \e[0m"
+echo -e "\e[32m [ INFO ] Config touchpad (natural scrolling, tap, etc) \e[0m"
 sudo cp 30-touchpad.conf /etc/X11/xorg.conf.d
 
 echo -e "\e[32m [ INFO ] Need by Polybar's backlight module (adjust brightness) \e[0m" 
