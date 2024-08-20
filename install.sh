@@ -51,7 +51,7 @@ git clone https://github.com/xmonad/xmonad-contrib $HOME/.config/xmonad/xmonad-c
 echo "[*] Install GHCup, stack to build xmonad"
 curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
 
-while ! command -v "stack" > /dev/null
+while true
 do
     source $HOME/.bashrc
 
