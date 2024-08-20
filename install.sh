@@ -2,21 +2,31 @@ sudo pacman -Syu
 sudo pacman -S neofetch ripgrep fzf git base-devel bat dbus eza feh firefox \
 			   github-cli kitty xf86-input-libinput xorg-input network-manager-applet \
 			   nodejs npm picom polybar pulseaudio pulseaudio-bluetooth python-pynvim xclip rofi xdg-utils \
-			   zoxide zsh noto-fonts-emoji ttf-jetbrains-mono-nerd ibus
+			   zoxide zsh noto-fonts-emoji ttf-jetbrains-mono-nerd ibus thefuck
+
+read
 
 cp -rf config/* ~/.config/
 cp -rf home/* ~
 
+read
+
 sudo cp 30-touchpad.conf /etc/X11/xorg.conf.d
 
-sudo useradd -aG video $USER
+read
+
+sudo usermod -aG video $USER
 sudo cp backlight.rules /etc/udev/rules.d
+
+read
 
 git clone https://aur.archlinux.org/yay.git ~/yay
 cd ~/yay
 makepkg -si
 cd ~/dotfiles
 rm -rf ~/yay
+
+read
 
 sudo pacman -S \
 git \
@@ -28,6 +38,8 @@ cd ~/.config/xmonad
 
 git clone https://github.com/xmonad/xmonad
 git clone https://github.com/xmonad/xmonad-contrib
+
+read
 
 curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
 source ~/.bashrc
@@ -56,8 +68,8 @@ sudo pacman -S gnome-themes-extra
 yay -S adwaita-qt5-git adwaita-qt6-git
 
 cd rofi
-chmod +x install.sh
-./install.sh
+chmod +x setup.sh
+./setup.sh
 cd ~/dotfiles
 
 echo You must config Rofi manualy
