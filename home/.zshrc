@@ -3,8 +3,13 @@ then
 	neofetch
 fi
 
-[ -f "/home/manhtq/.ghcup/env" ] && . "/home/manhtq/.ghcup/env" # ghcup-env
+[ -f "$HOME/.ghcup/env" ] && . "$HOME/.ghcup/env" # ghcup-env
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+
+# Setup dark theme
+export GTK_THEME=Adwaita:dark
+export GTK2_RC_FILES=/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc
+export QT_STYLE_OVERRIDE=Adwaita-Dark. 
 
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -21,7 +26,13 @@ ISABLE_UNTRACKED_FILES_DIRTY="true"
 
 HIST_STAMPS="mm/dd/yyyy"
 
-plugins=(git zsh-autosuggestions command-not-found colored-man-pages gh)
+plugins=(
+	git
+	zsh-autosuggestions
+	command-not-found
+	colored-man-pages
+	gh
+)
 
 source $ZSH/oh-my-zsh.sh
 
