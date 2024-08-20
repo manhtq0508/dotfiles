@@ -1,7 +1,12 @@
+#!/bin/bash
+
 if [ ! -e "$HOME/dotfiles" ]; then
-	echo -e "\e[31m Please clone this repo to ~ \e[0m"
+	echo -e "\e[31m Please clone this repo to /home/{username}/ \e[0m"
 	exit
 fi
+
+# Not need to use "source" anymore
+export PATH="$PATH:/usr/local/bin:/usr/local/sbin:/opt/bin:$HOME/.local/bin:$HOME/bin:$HOME/.ghcup/bin:$HOME/.cabal/bin"
 
 echo -e "\e[32m [ INFO ] Install package \e[0m"
 sudo pacman -Syu && sudo pacman -S --needed \
@@ -12,7 +17,8 @@ network-manager-applet nodejs npm picom \
 polybar pulseaudio pulseaudio-bluetooth \
 python-pynvim rofi xdg-utils zoxide zsh \
 noto-fonts-emoji ttf-jetbrains-mono-nerd \
-ibus thefuck xclip
+ibus thefuck xclip go
+# Append go (for yay), check later
 
 echo -e "\e[32m [ INFO ] Copy dotfiles and config files \e[0m"
 if [ ! -e "$HOME/.config" ]; then
@@ -33,9 +39,10 @@ git clone https://aur.archlinux.org/yay.git $HOME/yay
 cd $HOME/yay
 makepkg -si
 cd $HOME/dotfiles
-sudo rm -rf $HOME/yay $HOME/go
+sudo rm -rf $HOME/yay
+# Not remove go anymore
 
-echo -e "\e[32m [ INFO ] Requirements of xmonad (Build from source) \e[0m"
+echo -e "\e[32m [ INFO ] Requirements of XMonad (Build from source) \e[0m"
 sudo pacman -S --needed \
 git \
 xorg-server xorg-apps xorg-xinit xorg-xmessage \
@@ -51,22 +58,26 @@ git clone https://github.com/xmonad/xmonad-contrib $HOME/.config/xmonad/xmonad-c
 echo -e "\e[32m [ INFO ] Install GHCup, stack to build xmonad \e[0m"
 curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
 
-source $HOME/.ghcup/env # Load ghcup 
+# Try using export above, check later
+# source $HOME/.ghcup/env # Load ghcup 
 if command -v "stack" > /dev/null; then
-	echo -e "\e[32m [ INFO ] Stack found. Build Xmonad. \e[0m"
+	echo -e "\e[32m [ INFO ] Stack found. Build XMonad. \e[0m"
  	cd $HOME/.config/xmonad
 	stack init
 	stack install
 else 
        echo -e "\e[31m Stack not found. Try using new shell. \e[0m"
-       bash -c "source $HOME/.ghcup/env && cd $HOME/.config/xmonad && stack init $HOME/.config/xmonad && stack install $HOME/.config/xmonad"
+       echo "Press Enter to continue"
+       read
+       bash -c "source $HOME/.ghcup/env && cd $HOME/.config/xmonad && stack init && stack install"
 fi
 
-source $HOME/.bashrc
 if command -v "xmonad" > /dev/null; then
 	echo -e "\e[32m XMonad installed! \e[0m"
 else
 	echo -e "\e[31m XMonad not installed! \e[0m"
+ 	echo "Press Enter to continue"
+  	read
  fi
 
 echo -e "\e[32m [ INFO ] Bluetooth \e[0m"
@@ -95,4 +106,5 @@ cd $HOME/dotfiles/rofi
 chmod +x setup.sh
 ./setup.sh
 
-echo You must config Rofi manuall
+echo "You must config Rofi manuall."
+echo "=== DONE ==="
