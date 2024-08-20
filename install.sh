@@ -1,9 +1,9 @@
 if [ ! -e "$HOME/dotfiles" ]; then
-	echo "Please clone this repo to $HOME"
+	echo -e "\e[31m Please clone this repo to ~ \e[0m"
 	exit
 fi
 
-echo "[*] Install package"
+echo -e "\e[32m [ INFO ] Install package \e[0m"
 sudo pacman -Syu && sudo pacman -S --needed \
 neofetch ripgrep fzf git base-devel bat dbus \
 eza feh firefox github-cli kitty \
@@ -14,28 +14,28 @@ python-pynvim rofi xdg-utils zoxide zsh \
 noto-fonts-emoji ttf-jetbrains-mono-nerd \
 ibus thefuck xclip
 
-echo "[*] Copy dotfiles and config files"
+echo -e "\e[32m [ INFO ] Copy dotfiles and config files \e[0m"
 if [ ! -e "$HOME/.config" ]; then
 	mkdir $HOME/.config
 fi
 cp -rf config/* $HOME/.config/
 cp -rf home/.* $HOME
 
-echo "[*] Config touchpad (natural scrolling, tap, etc)"
+echo -e "\e32m [ INFO ] Config touchpad (natural scrolling, tap, etc) \e[0m"
 sudo cp 30-touchpad.conf /etc/X11/xorg.conf.d
 
-echo "[*] Need by Polybar's backlight module (adjust brightness)" 
+echo -e "\e[32m [ INFO ] Need by Polybar's backlight module (adjust brightness) \e[0m" 
 sudo usermod -aG video $USER
 sudo cp backlight.rules /etc/udev/rules.d
 
-echo "[*] Install yay"
+echo -e "\e[32m [ INFO ] Install yay \e[0m"
 git clone https://aur.archlinux.org/yay.git $HOME/yay
 cd $HOME/yay
 makepkg -si
 cd $HOME/dotfiles
 sudo rm -rf $HOME/yay $HOME/go
 
-echo "[*] Requirements of xmonad (Build from source)"
+echo -e "\e[32m [ INFO ] Requirements of xmonad (Build from source) \e[0m"
 sudo pacman -S --needed \
 git \
 xorg-server xorg-apps xorg-xinit xorg-xmessage \
@@ -48,43 +48,47 @@ fi
 git clone https://github.com/xmonad/xmonad $HOME/.config/xmonad/xmonad
 git clone https://github.com/xmonad/xmonad-contrib $HOME/.config/xmonad/xmonad-contrib
 
-echo "[*] Install GHCup, stack to build xmonad"
+echo -e "\e[32m [ INFO ] Install GHCup, stack to build xmonad \e[0m"
 curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
 
-while true
-do
-    source $HOME/.bashrc
+source $HOME/.bashrc
+if command -v "stack" > /dev/null; then
+	echo -e "\[32m [ INFO ] Stack found. Build Xmonad. \e[0m"
+	stack init $HOME/.config/xmonad
+	stack install $HOME/.config/xmonad
+else 
+       echo -e "\e[31m Stack not found. Try using new shell. \e[0m"
+       bash -c "source $HOME/.bashrc && stack init $HOME/.config/xmonad && stack install $HOME/.config/xmonad"
+fi
 
-    if command -v "stack" > /dev/null 2>&1; then 
-        stack init $HOME/.config/xmonad
-        stack install $HOME/.config/xmonad
-        break
-    else 
-	       echo "Stack not found. Try again."
-	       echo "Press Enter to continue"
-	       read
-    fi
-    source $HOME/.bashrc
-done
+source $HOME/.bashrc
+if command -v "xmonad" > /dev/null; then
+	echo -e "\[32m XMonad installed! \e[0m"
+else
+	echo -e "\[31m XMonad not installed! \e[0m"
+ fi
 
-echo "[*] Bluetooth"
-sudo pacman -S bluez bluez-utils blueman
+ echo "Press Enter to continue!"
+ read
+
+echo -e "\e[32m [ INFO ] Bluetooth \e[0m"
+sudo pacman -S --needed bluez bluez-utils blueman
 sudo modprobe btusb
 sudo systemctl enable bluetooth
 sudo systemctl start bluetooth
 
 yay -S bluetuith
 
-echo "[*] Oh-my-zsh"
+echo -e "\e[32m [ INFO ] Oh-my-zsh \e[0m"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
-echo "[*] Ibus-bamboo"
+echo -e "\e[32m [ INFO ] Ibus-bamboo \e[0m"
 ibus-daemon &
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/BambooEngine/ibus-bamboo/master/archlinux/install.sh)"
 
-echo "[*] Dark theme"
-sudo pacman -S gnome-themes-extra
+echo -e "\e[32m [ INFO ] Dark theme \e[0m"
+sudo pacman -S --needed gnome-themes-extra
 yay -S adwaita-qt5-git adwaita-qt6-git
 
 # Rofi
