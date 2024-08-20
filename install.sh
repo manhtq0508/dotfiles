@@ -4,8 +4,8 @@ sudo pacman -S neofetch ripgrep fzf git base-devel bat dbus eza feh firefox \
 			   nodejs npm picom polybar pulseaudio pulseaudio-bluetooth python-pynvim xclip rofi xdg-utils \
 			   zoxide zsh noto-fonts-emoji ttf-jetbrains-mono-nerd ibus
 
-cp -r config/* ~/.config/
-cp -r home/* ~
+cp -rf config/* ~/.config/
+cp -rf home/* ~
 
 sudo cp 30-touchpad.conf /etc/X11/xorg.conf.d
 
