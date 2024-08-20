@@ -1,10 +1,15 @@
-if command -v neofetch &> /dev/null
-then
-	neofetch
-fi
+function check_command() {
+    if command -v "$1" &> /dev/null; then
+        eval "$2"
+    else
+        echo -e "\e[33m[ WARN ] $1 is not installed\e[0m"
+    fi
+}
+
+check_command "neofetch" "neofetch"
 
 [ -f "$HOME/.ghcup/env" ] && . "$HOME/.ghcup/env" # ghcup-env
-export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+export PATH="$PATH:/usr/local/bin:/usr/local/sbin:/opt/bin:$HOME/.local/bin:$HOME/bin"
 
 # Setup dark theme
 export GTK_THEME=Adwaita:dark
@@ -39,8 +44,8 @@ source $ZSH/oh-my-zsh.sh
 export LANG=en_US.UTF-8
 
 unalias -m '*' # Remove all zsh alias
-
 source ~/.alias.sh # Load custom alias
 
-eval $(thefuck --alias)
-eval "$(zoxide init zsh)"
+
+check_command "thefuck" 'eval "$(thefuck --alias)"'
+check_command "zoxide" 'eval "$(zoxide init bash)"'
