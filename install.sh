@@ -5,8 +5,8 @@ if [ ! -e "$HOME/dotfiles" ]; then
 	exit
 fi
 
-# Not need to use "source" anymore
-export PATH="$PATH:/usr/local/bin:/usr/local/sbin:/opt/bin:$HOME/.local/bin:$HOME/bin:$HOME/.ghcup/bin:$HOME/.cabal/bin"
+# Not need to use "source ~/.bashrc" anymore
+export PATH="$PATH:/usr/local/bin:/usr/local/sbin:/opt/bin:$HOME/.local/bin:$HOME/bin"
 
 echo -e "\e[32m [ INFO ] Install package \e[0m"
 sudo pacman -Syu && sudo pacman -S --needed \
@@ -58,8 +58,7 @@ git clone https://github.com/xmonad/xmonad-contrib $HOME/.config/xmonad/xmonad-c
 echo -e "\e[32m [ INFO ] Install GHCup, stack to build xmonad \e[0m"
 curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
 
-# Try using export above, check later
-# source $HOME/.ghcup/env # Load ghcup 
+source $HOME/.ghcup/env # Load ghcup env 
 if command -v "stack" > /dev/null; then
 	echo -e "\e[32m [ INFO ] Stack found. Build XMonad. \e[0m"
  	cd $HOME/.config/xmonad
