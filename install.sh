@@ -7,8 +7,9 @@ fi
 sudo pacman -Syu
 sudo pacman -S neofetch ripgrep fzf git base-devel bat dbus eza feh firefox \
 			   github-cli kitty xf86-input-libinput xorg-input network-manager-applet \
-			   nodejs npm picom polybar pulseaudio pulseaudio-bluetooth python-pynvim xclip rofi xdg-utils \
-			   zoxide zsh noto-fonts-emoji ttf-jetbrains-mono-nerd ibus thefuck
+			   nodejs npm picom polybar pulseaudio pulseaudio-bluetooth python-pynvim \
+			   rofi xdg-utils zoxide zsh noto-fonts-emoji ttf-jetbrains-mono-nerd \
+			   ibus thefuck xclip
 
 # Copy dotfiles and config files
 if [ ! -e "$HOME/.config" ]; then
