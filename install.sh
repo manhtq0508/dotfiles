@@ -4,12 +4,12 @@ sudo pacman -S neofetch ripgrep fzf git base-devel bat dbus eza feh firefox \
 			   nodejs npm picom polybar pulseaudio pulseaudio-bluetooth python-pynvim xclip rofi xdg-utils \
 			   zoxide zsh noto-fonts-emoji ttf-jetbrains-mono-nerd ibus thefuck
 
-if [ ! -e "~/.config"]; then
+if [ ! -e "~/.config" ]; then
 	mkdir ~/.config
 fi
 
 cp -rf config/* ~/.config/
-cp -rf home/* ~
+cp -rf home/.* ~
 
 read
 
@@ -35,6 +35,10 @@ git \
 xorg-server xorg-apps xorg-xinit xorg-xmessage \
 libx11 libxft libxinerama libxrandr libxss \
 pkgconf
+
+if [ ! -e "~/.config/xmonad" ]; then
+	mkdir ~/.config/xmonad
+fi
 
 cd ~/.config/xmonad
 
