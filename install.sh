@@ -19,7 +19,7 @@ sudo pacman -Syu && sudo pacman -S --needed \
     polybar pulseaudio pulseaudio-bluetooth \
     python-pynvim rofi xdg-utils zoxide zsh \
     noto-fonts-emoji ttf-jetbrains-mono-nerd \
-    ibus thefuck xclip go
+    ibus thefuck xclip go less
 
 # Cài đặt Oh My Zsh
 echo -e "\e[32m [ INFO ] Oh-my-zsh \e[0m"
