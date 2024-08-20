@@ -7,15 +7,6 @@ then
 	neofetch
 fi
 
-# If not running interactively, don't do anything
-[[ $- != *i* ]] && return
-
-source ~/.alias.sh
-PS1='[\u@\h \W]\$ '
-
-eval "$(thefuck --alias)"
-eval "$(zoxide init bash)"
-
 [ -f "$HOME/.ghcup/env" ] && . "$HOME/.ghcup/env" # ghcup-env
 
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
@@ -24,3 +15,12 @@ export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 export GTK_THEME=Adwaita:dark
 export GTK2_RC_FILES=/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc
 export QT_STYLE_OVERRIDE=Adwaita-Dark. 
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+source ~/.alias.sh
+PS1='[\u@\h \W]\$ '
+
+eval "$(thefuck --alias)"
+eval "$(zoxide init bash)"
