@@ -4,11 +4,10 @@ if [ ! -e "$HOME/dotfiles" ]; then
 fi
 
 echo "[*] Install package"
-sudo pacman -Syu
-sudo pacman -S --needed \
+sudo pacman -Syu && sudo pacman -S --needed \
 neofetch ripgrep fzf git base-devel bat dbus \
 eza feh firefox github-cli kitty \
-xf86-input-libinput xorg-input \
+xf86-input-libinput xorg-xinput \
 network-manager-applet nodejs npm picom \
 polybar pulseaudio pulseaudio-bluetooth \
 python-pynvim rofi xdg-utils zoxide zsh \
