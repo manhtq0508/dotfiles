@@ -50,17 +50,22 @@ git clone https://github.com/xmonad/xmonad-contrib $HOME/.config/xmonad/xmonad-c
 
 echo "[*] Install GHCup, stack to build xmonad"
 curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
-source $HOME/.bashrc
 
-if command -v "stack" > /dev/null 2>&1; then 
-	stack init $HOME/.config/xmonad
-	stack install $HOME/.config/xmonad
-else 
-	echo "Stack not found. Please check and try again."
-	echo "Press Enter to continue"
-	read
-fi
-source $HOME/.bashrc
+while ! command -v "stack" > /dev/null
+do
+    source $HOME/.bashrc
+
+    if command -v "stack" > /dev/null 2>&1; then 
+        stack init $HOME/.config/xmonad
+        stack install $HOME/.config/xmonad
+        break
+    else 
+	       echo "Stack not found. Try again."
+	       echo "Press Enter to continue"
+	       read
+    fi
+    source $HOME/.bashrc
+done
 
 echo "[*] Bluetooth"
 sudo pacman -S bluez bluez-utils blueman
