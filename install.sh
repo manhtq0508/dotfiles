@@ -1,8 +1,14 @@
 #!/bin/bash
 
+# Kiểm tra có dùng sudo không
+if [ "$UID" -eq 0 ]; then
+    echo -e "\e[31m Do not use sudo \e[0m"
+    exit
+fi
+
 # Kiểm tra xem thư mục dotfiles có tồn tại không
 if [ ! -e "$HOME/dotfiles" ]; then
-    echo -e "\e[31m Please clone this repo to /home/{username}/ \e[0m"
+    echo -e "\e[31m Please clone this repo to /home/$USER/ \e[0m"
     exit
 fi
 
