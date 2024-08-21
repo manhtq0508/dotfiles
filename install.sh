@@ -1,5 +1,20 @@
 #!/bin/bash
 
+# Khởi tạo biến toàn cục
+errorCount=0
+errorMessages=()
+
+# Hàm kiểm tra và ghi lỗi
+function checkAndLogError {
+    local status=$1
+    local message=$2
+
+    if [ "$status" -ne 0 ]; then
+        errorCount=$((errorCount + 1))
+        errorMessages+=("$message")
+    fi
+}
+
 # Kiểm tra có dùng sudo không
 if [ "$UID" -eq 0 ]; then
     echo -e "\e[31m Do not use sudo \e[0m"
@@ -26,12 +41,15 @@ sudo pacman -Syu && sudo pacman -S --needed \
     python-pynvim rofi xdg-utils zoxide zsh \
     noto-fonts-emoji ttf-jetbrains-mono-nerd \
     ibus thefuck xclip go less
+checkAndLogError $? "Failed to install packages."
 
 # Cài đặt Oh My Zsh
 echo -e "\e[32m [ INFO ] Oh-my-zsh \e[0m"
 cd "$HOME"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+checkAndLogError $? "Failed to install Oh-my-zsh."
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+checkAndLogError $? "Failed to clone zsh-autosuggestions."
 
 # Sao chép các file cấu hình
 echo -e "\e[32m [ INFO ] Copy dotfiles and config files \e[0m"
@@ -39,22 +57,27 @@ if [ ! -e "$HOME/.config" ]; then
     mkdir "$HOME/.config"
 fi
 cp -rf config/* "$HOME/.config/"
+checkAndLogError $? "Failed to copy config files to $HOME/.config/"
 cp -rf home/.* "$HOME"
+checkAndLogError $? "Failed to copy home files."
 
 # Cấu hình touchpad
 echo -e "\e[32m [ INFO ] Config touchpad (natural scrolling, tap, etc) \e[0m"
 sudo cp 30-touchpad.conf /etc/X11/xorg.conf.d
+checkAndLogError $? "Failed to configure touchpad."
 
 # Cấu hình module điều chỉnh độ sáng của Polybar
 echo -e "\e[32m [ INFO ] Need by Polybar's backlight module (adjust brightness) \e[0m"
 sudo usermod -aG video "$USER"
 sudo cp backlight.rules /etc/udev/rules.d
+checkAndLogError $? "Failed to configure backlight module."
 
 # Cài đặt yay
 echo -e "\e[32m [ INFO ] Install yay \e[0m"
 git clone https://aur.archlinux.org/yay.git "$HOME/yay"
 cd "$HOME/yay"
 makepkg -si
+checkAndLogError $? "Failed to build and install yay."
 cd "$HOME/dotfiles"
 sudo rm -rf "$HOME/yay"
 
@@ -65,16 +88,20 @@ sudo pacman -S --needed \
     xorg-server xorg-apps xorg-xinit xorg-xmessage \
     libx11 libxft libxinerama libxrandr libxss \
     pkgconf
+checkAndLogError $? "Failed to install XMonad requirements."
 
 if [ ! -e "$HOME/.config/xmonad" ]; then
     mkdir "$HOME/.config/xmonad"
 fi
 git clone https://github.com/xmonad/xmonad "$HOME/.config/xmonad/xmonad"
+checkAndLogError $? "Failed to clone xmonad repository."
 git clone https://github.com/xmonad/xmonad-contrib "$HOME/.config/xmonad/xmonad-contrib"
+checkAndLogError $? "Failed to clone xmonad-contrib repository."
 
 # Cài đặt GHCup và Stack để build XMonad
 echo -e "\e[32m [ INFO ] Install GHCup, stack to build xmonad \e[0m"
 curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
+checkAndLogError $? "Failed to install GHCup."
 
 source "$HOME/.ghcup/env" # Load ghcup env
 if command -v "stack" > /dev/null; then
@@ -82,11 +109,13 @@ if command -v "stack" > /dev/null; then
     cd "$HOME/.config/xmonad"
     stack init
     stack install
+    checkAndLogError $? "Failed to build and install XMonad."
 else
     echo -e "\e[31m Stack not found. Try using new shell. \e[0m"
     echo "Press Enter to continue"
     read
     bash -c "source $HOME/.ghcup/env && cd $HOME/.config/xmonad && stack init && stack install"
+    checkAndLogError $? "Failed to build and install XMonad after retry."
 fi
 
 if command -v "xmonad" > /dev/null; then
@@ -100,26 +129,47 @@ fi
 # Cấu hình Bluetooth
 echo -e "\e[32m [ INFO ] Bluetooth \e[0m"
 sudo pacman -S --needed bluez bluez-utils blueman
+checkAndLogError $? "Failed to install Bluetooth packages."
 sudo modprobe btusb
+checkAndLogError $? "Failed to load btusb module."
 sudo systemctl enable bluetooth
+checkAndLogError $? "Failed to enable Bluetooth service."
 sudo systemctl start bluetooth
+checkAndLogError $? "Failed to start Bluetooth service."
 
 yay -S bluetuith
+checkAndLogError $? "Failed to install bluetuith using yay."
 
 # Cài đặt Ibus-Bamboo
 echo -e "\e[32m [ INFO ] Ibus-Bamboo \e[0m"
 ibus-daemon &
+checkAndLogError $? "Failed to start ibus-daemon."
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/BambooEngine/ibus-bamboo/master/archlinux/install.sh)"
+checkAndLogError $? "Failed to install Ibus-Bamboo."
 
 # Cài đặt Dark theme
 echo -e "\e[32m [ INFO ] Dark theme \e[0m"
 sudo pacman -S --needed gnome-themes-extra
+checkAndLogError $? "Failed to install dark theme."
 yay -S adwaita-qt5-git adwaita-qt6-git
+checkAndLogError $? "Failed to install Adwaita themes using yay."
 
 # Cấu hình Rofi
 cd "$HOME/dotfiles/rofi"
 chmod +x setup.sh
 ./setup.sh
+checkAndLogError $? "Failed to configure Rofi."
 
 echo "You must config Rofi manually."
 echo "=== DONE ==="
+
+# In thống kê lỗi
+if [ $errorCount -gt 0 ]; then
+    echo -e "\e[31m [ ERROR ] There were $errorCount errors during the script execution. \e[0m"
+    echo "Error details:"
+    for msg in "${errorMessages[@]}"; do
+        echo "- $msg"
+    done
+else
+    echo -e "\e[32m [ INFO ] No errors encountered. \e[0m"
+fi
