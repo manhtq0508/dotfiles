@@ -62,6 +62,11 @@ checkAndLogError $? "Failed to copy config files to $HOME/.config/"
 cp -rf home/.* "$HOME"
 checkAndLogError $? "Failed to copy home files."
 
+# Git config
+git config --global user.name "Trần Quang Mạnh"
+git config --global user.email "manhtq0508@gmail.com
+git config --global init.defaultBranch main
+
 # Cấu hình touchpad
 echo -e "\e[32m [ INFO ] Config touchpad (natural scrolling, tap, etc) \e[0m"
 sudo cp 30-touchpad.conf /etc/X11/xorg.conf.d
