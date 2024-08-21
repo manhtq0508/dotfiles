@@ -56,6 +56,7 @@ echo -e "\e[32m [ INFO ] Copy dotfiles and config files \e[0m"
 if [ ! -e "$HOME/.config" ]; then
     mkdir "$HOME/.config"
 fi
+cd $HOME/dotfiles
 cp -rf config/* "$HOME/.config/"
 checkAndLogError $? "Failed to copy config files to $HOME/.config/"
 cp -rf home/.* "$HOME"
