@@ -17,14 +17,14 @@ export PATH="$PATH:/usr/local/bin:/usr/local/sbin:/opt/bin:$HOME/.local/bin:$HOM
 
 # Cài đặt các gói cần thiết
 echo -e "\e[32m [ INFO ] Install package \e[0m"
-sudo pacman -Syu && sudo pacman -S --needed \
+sudo pacman -Syu && sudo pacman -S --needed --noconfirm \
     neofetch ripgrep fzf git base-devel bat dbus \
     eza feh firefox github-cli kitty \
     xf86-input-libinput xorg-xinput \
     network-manager-applet nodejs npm picom \
     polybar pulseaudio pulseaudio-bluetooth \
     python-pynvim rofi xdg-utils zoxide zsh \
-    noto-fonts-emoji ttf-jetbrains-mono-nerd \
+    noto-fonts noto-fonts-extra ttf-jetbrains-mono-nerd \
     ibus thefuck xclip go less
 
 # Cài đặt Oh My Zsh
@@ -55,13 +55,13 @@ sudo cp backlight.rules /etc/udev/rules.d
 echo -e "\e[32m [ INFO ] Install yay \e[0m"
 git clone https://aur.archlinux.org/yay.git "$HOME/yay"
 cd "$HOME/yay"
-makepkg -si
+makepkg -si --noconfirm
 cd "$HOME/dotfiles"
 sudo rm -rf "$HOME/yay"
 
 # Cài đặt các yêu cầu của XMonad (build từ source)
 echo -e "\e[32m [ INFO ] Requirements of XMonad (Build from source) \e[0m"
-sudo pacman -S --needed \
+sudo pacman -S --needed --noconfirm \
     git \
     xorg-server xorg-apps xorg-xinit xorg-xmessage \
     libx11 libxft libxinerama libxrandr libxss \
@@ -100,12 +100,12 @@ fi
 
 # Cấu hình Bluetooth
 echo -e "\e[32m [ INFO ] Bluetooth \e[0m"
-sudo pacman -S --needed bluez bluez-utils blueman
+sudo pacman -S --needed --noconfirm bluez bluez-utils blueman
 sudo modprobe btusb
 sudo systemctl enable bluetooth
 sudo systemctl start bluetooth
 
-yay -S bluetuith
+yay -S --noconfirm bluetuith
 
 # Cài đặt Ibus-Bamboo
 echo -e "\e[32m [ INFO ] Ibus-Bamboo \e[0m"
@@ -114,8 +114,8 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/BambooEngine/ibus-bamboo
 
 # Cài đặt Dark theme
 echo -e "\e[32m [ INFO ] Dark theme \e[0m"
-sudo pacman -S --needed gnome-themes-extra
-yay -S adwaita-qt5-git adwaita-qt6-git
+sudo pacman -S --needed --noconfirm gnome-themes-extra
+yay -S --noconfirm adwaita-qt5-git adwaita-qt6-git
 
 # Cấu hình Rofi
 cd "$HOME/dotfiles/rofi"

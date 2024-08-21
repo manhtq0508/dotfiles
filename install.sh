@@ -32,14 +32,14 @@ export PATH="$PATH:/usr/local/bin:/usr/local/sbin:/opt/bin:$HOME/.local/bin:$HOM
 
 # Cài đặt các gói cần thiết
 echo -e "\e[32m [ INFO ] Install package \e[0m"
-sudo pacman -Syu && sudo pacman -S --needed \
+sudo pacman -Syu && sudo pacman -S --needed --noconfirm \
     neofetch ripgrep fzf git base-devel bat dbus \
     eza feh firefox github-cli kitty \
     xf86-input-libinput xorg-xinput \
     network-manager-applet nodejs npm picom \
     polybar pulseaudio pulseaudio-bluetooth \
     python-pynvim rofi xdg-utils zoxide zsh \
-    noto-fonts-emoji ttf-jetbrains-mono-nerd \
+    noto-fonts noto-fonts-extra ttf-jetbrains-mono-nerd \
     ibus thefuck xclip go less
 checkAndLogError $? "Failed to install packages."
 
@@ -77,14 +77,14 @@ checkAndLogError $? "Failed to configure backlight module."
 echo -e "\e[32m [ INFO ] Install yay \e[0m"
 git clone https://aur.archlinux.org/yay.git "$HOME/yay"
 cd "$HOME/yay"
-makepkg -si
+makepkg -si --noconfirm
 checkAndLogError $? "Failed to build and install yay."
 cd "$HOME/dotfiles"
 sudo rm -rf "$HOME/yay"
 
 # Cài đặt các yêu cầu của XMonad (build từ source)
 echo -e "\e[32m [ INFO ] Requirements of XMonad (Build from source) \e[0m"
-sudo pacman -S --needed \
+sudo pacman -S --needed --noconfirm \
     git \
     xorg-server xorg-apps xorg-xinit xorg-xmessage \
     libx11 libxft libxinerama libxrandr libxss \
@@ -129,7 +129,7 @@ fi
 
 # Cấu hình Bluetooth
 echo -e "\e[32m [ INFO ] Bluetooth \e[0m"
-sudo pacman -S --needed bluez bluez-utils blueman
+sudo pacman -S --needed --noconfirm bluez bluez-utils blueman
 checkAndLogError $? "Failed to install Bluetooth packages."
 sudo modprobe btusb
 checkAndLogError $? "Failed to load btusb module."
@@ -138,7 +138,7 @@ checkAndLogError $? "Failed to enable Bluetooth service."
 sudo systemctl start bluetooth
 checkAndLogError $? "Failed to start Bluetooth service."
 
-yay -S bluetuith
+yay -S --needed --noconfirm bluetuith
 checkAndLogError $? "Failed to install bluetuith using yay."
 
 # Cài đặt Ibus-Bamboo
@@ -150,9 +150,9 @@ checkAndLogError $? "Failed to install Ibus-Bamboo."
 
 # Cài đặt Dark theme
 echo -e "\e[32m [ INFO ] Dark theme \e[0m"
-sudo pacman -S --needed gnome-themes-extra
+sudo pacman -S --needed --noconfirm gnome-themes-extra
 checkAndLogError $? "Failed to install dark theme."
-yay -S adwaita-qt5-git adwaita-qt6-git
+yay -S --needed --noconfirm adwaita-qt5-git adwaita-qt6-git
 checkAndLogError $? "Failed to install Adwaita themes using yay."
 
 # Cấu hình Rofi
