@@ -33,7 +33,7 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
 fi
 
 # Wallpaper
-feh --bg-fill --nofehbg ~/.config/wallpapers/wallpaper-1.jpg
+feh --bg-fill --no-fehbg ~/.config/wallpapers/wallpaper-1.jpg
 
 # Rounded corner
 picom &
