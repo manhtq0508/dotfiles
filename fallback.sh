@@ -57,6 +57,11 @@ echo -e "\e[32m [ INFO ] Need by Polybar's backlight module (adjust brightness) 
 sudo usermod -aG video "$USER"
 sudo cp backlight.rules /etc/udev/rules.d
 
+# Load fontconfig
+echo -e "\e[32m [ INFO ] Config font \e[0m"
+fc-cache -fv
+checkAndLogError $? "Fail to config font"
+
 # Cài đặt yay
 echo -e "\e[32m [ INFO ] Install yay \e[0m"
 git clone https://aur.archlinux.org/yay.git "$HOME/yay"
