@@ -1,34 +1,40 @@
 #!/bin/python
 
-from pynput import keyboard
+from pynput import keyboard as keybrd
+from pathlib import Path as path
 
-layoutIndex = 0
-LAYOUT = ["Tall", "Mirror Tall", "Full", "ThreeCol"]
-LAYOUT_FILE = "/home/manhtq/.config/polybar/layout.tmp"
+current_press = []
 
-def resetLayout():
-    global LAYOUT
+file = str(path("~/.config/polybar/layout.tmp").expanduser())
+layout = ["Tall", "Mirror Tall", "Full", "ThreeCol"]
+index = -1
 
-    with open(LAYOUT_FILE, "w", encoding="UTF-8") as f:
-        f.write(LAYOUT[0])
+def write_layout():
+    global layout
+    global index
 
-def update():
-    print("Catch")
-    global LAYOUT
-    global layoutIndex
+    index += 1
+    if index >= len(layout):
+        index = 0
 
-    layoutIndex += 1
-    if layoutIndex >= len(LAYOUT):
-        layoutIndex = 0
+    with open(file, "w", encoding="UTF-8") as f:
+        f.write(layout[index])
 
-    with open(LAYOUT_FILE, "w", encoding="UTF-8") as f:
-        f.write(LAYOUT[layoutIndex])
+def on_key_press(key):
+    if key not in current_press:
+        current_press.append(key)
 
-resetLayout()
+    if (keybrd.Key.cmd in current_press) and (keybrd.Key.space in current_press) and (len(current_press) == 2):
+        write_layout()
 
-with keyboard.GlobalHotKeys({
-    '<cmd>+<shift>+<space>': lambda: print("Gill"),
-    '<cmd>+<space>': update
-    }) as l:
-    l.join()
-    print(l)
+def on_key_release(key):
+    if key in current_press:
+        current_press.remove(key)
+
+write_layout() # Init layout
+
+with keybrd.Listener(
+    on_press=on_key_press,
+    on_release=on_key_release
+    ) as listener:
+    listener.join()
