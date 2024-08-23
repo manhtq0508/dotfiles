@@ -41,7 +41,7 @@ sudo pacman -Syu && sudo pacman -S --needed --noconfirm \
     python-pynvim rofi xdg-utils zoxide zsh \
     noto-fonts noto-fonts-extra ttf-croscore \
 	ttf-jetbrains-mono-nerd ibus thefuck xclip \
-	go less
+	go less discord qbittorrent gmp ncurses
 checkAndLogError $? "Failed to install packages."
 
 # Cài đặt Oh My Zsh
@@ -62,6 +62,10 @@ cp -rf config/* "$HOME/.config/"
 checkAndLogError $? "Failed to copy config files to $HOME/.config/"
 cp -rf home/.* "$HOME"
 checkAndLogError $? "Failed to copy home files."
+
+# Config update_layout.py
+chmod +x $HOME/.config/polybar/update_layout.py
+checkAndLogError $? "Fail to chmod update_layout.py"
 
 # Git config
 git config --global user.name "Trần Quang Mạnh"
@@ -145,7 +149,7 @@ checkAndLogError $? "Failed to enable Bluetooth service."
 sudo systemctl start bluetooth
 checkAndLogError $? "Failed to start Bluetooth service."
 
-yay -S --needed --noconfirm bluetuith
+yay -S --needed --noconfirm bluetuith python-pynput
 checkAndLogError $? "Failed to install bluetuith using yay."
 
 # Cài đặt Ibus-Bamboo
