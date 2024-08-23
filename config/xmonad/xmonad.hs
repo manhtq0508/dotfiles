@@ -30,6 +30,7 @@ myConfig = def
 	$ myLayout      -- Use custom layouts
     , manageHook = myManageHook  -- Match on certain windows
 	, terminal = "kitty"
+	
     }
   `additionalKeysP`
     [ ("M-f"  , spawn "firefox"                   )
