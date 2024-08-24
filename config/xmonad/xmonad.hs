@@ -6,7 +6,6 @@ import XMonad.Hooks.ManageHelpers
 
 import XMonad.Util.EZConfig
 import XMonad.Util.Loggers
-import XMonad.Util.SpawnOnce
 
 import XMonad.Layout.Magnifier
 import XMonad.Layout.ThreeColumns
@@ -29,7 +28,6 @@ myConfig = def
 	$ myLayout      -- Use custom layouts
     , manageHook = myManageHook  -- Match on certain windows
 	, terminal = "kitty"
-    , startupHook = spawnOnce "~/.config/polybar/update_layout.py"
     }
   `additionalKeysP`
     [ ("M-f"  , spawn "firefox"                   )
