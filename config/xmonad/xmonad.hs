@@ -32,7 +32,7 @@ myConfig = def
   `additionalKeysP`
     [ ("M-f"  , spawn "firefox"                   )
 	, ("M-p", spawn "polybar-msg cmd restart")
-	, ("C-<space>", spawn "rofi -show drun")
+	, ("C-S-<Space>", spawn "~/.config/rofi/launchers/type-1/launcher.sh")
     ]
 
 myManageHook :: ManageHook

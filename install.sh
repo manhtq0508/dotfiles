@@ -41,9 +41,9 @@ sudo pacman -Syu && sudo pacman -S --needed --noconfirm \
     network-manager-applet nodejs npm picom \
     polybar pulseaudio pulseaudio-bluetooth \
     python-pynvim rofi xdg-utils zoxide zsh \
-    noto-fonts noto-fonts-extra ttf-croscore \
+    noto-fonts noto-fonts-extra noto-fonts-emoji ttf-croscore \
 	ttf-jetbrains-mono-nerd ibus thefuck xclip \
-	go less discord qbittorrent gmp ncurses
+	go less
 checkAndLogError $? "Failed to install packages."
 
 # Cài đặt Oh My Zsh

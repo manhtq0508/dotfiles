@@ -47,4 +47,4 @@ source ~/.alias.sh # Load custom alias
 
 # Check and configure additional commands
 check_command "thefuck" 'eval "$(thefuck --alias)"'
-check_command "zoxide" 'eval "$(zoxide init bash)"'
+check_command "zoxide" 'eval "$(zoxide init zsh)"'
