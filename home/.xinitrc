@@ -46,7 +46,7 @@ polybar &
 
 # Set layout update
 killall -q update_layout.py
-~/.config/polybar/update_layout.py
+~/.config/polybar/update_layout.py &
 
 # Input method
 ibus-daemon &
