@@ -178,9 +178,10 @@ if [ "$installDarkTheme" = true ]; then
 fi
 
 # Cấu hình Rofi
-cd "$HOME/dotfiles"
-./setup_rofi.sh
-checkAndLogError $? "Failed to configure Rofi."
+cd "$HOME/dotfiles/rofi"
+chmod +x setup.sh
+./setup.sh
+heckAndLogError $? "Failed to configure Rofi."
 
 # Hiển thị thông tin về các lỗi đã gặp
 if [ "$errorCount" -ne 0 ]; then
