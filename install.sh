@@ -43,7 +43,7 @@ sudo pacman -Syu && sudo pacman -S --needed --noconfirm \
     python-pynvim rofi xdg-utils zoxide zsh \
     noto-fonts noto-fonts-extra noto-fonts-emoji ttf-croscore \
 	ttf-jetbrains-mono-nerd ibus thefuck xclip \
-	go less
+	go bottom discord qbittorrent
 checkAndLogError $? "Failed to install packages."
 
 # Cài đặt Oh My Zsh
