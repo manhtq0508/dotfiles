@@ -140,6 +140,10 @@ else
     echo -e "\e[31m XMonad not installed! \e[0m"
 fi
 
+# pynput
+yay -S --needed --noconfirm python-pynput
+checkAndLogError $? "Failed to install pynput"
+
 # Cấu hình Bluetooth
 echo -e "\e[32m [ INFO ] Bluetooth \e[0m"
 sudo pacman -S --needed --noconfirm bluez bluez-utils blueman
@@ -151,7 +155,7 @@ checkAndLogError $? "Failed to enable Bluetooth service."
 sudo systemctl start bluetooth
 checkAndLogError $? "Failed to start Bluetooth service."
 
-yay -S --needed --noconfirm bluetuith python-pynput
+yay -S --needed --noconfirm bluetuith
 checkAndLogError $? "Failed to install bluetuith using yay."
 
 # Cài đặt Ibus-Bamboo
