@@ -34,14 +34,14 @@ export PATH="$PATH:/usr/local/bin:/usr/local/sbin:/opt/bin:$HOME/.local/bin:$HOM
 # Cài đặt các gói cần thiết
 echo -e "\e[32m [ INFO ] Install package \e[0m"
 sudo pacman -Syu && sudo pacman -S --needed --noconfirm \
-    neofetch ripgrep fzf git base-devel bat dbus \
+    neofetch ripgrep fzf git base-devel bat \
     eza feh firefox github-cli kitty \
     xf86-input-libinput xorg-xinput \
     network-manager-applet nodejs npm picom \
     polybar pulseaudio pulseaudio-bluetooth \
     python-pynvim rofi xdg-utils zoxide zsh \
     noto-fonts noto-fonts-extra noto-fonts-emoji ttf-croscore \
-	ttf-jetbrains-mono-nerd ibus thefuck xclip \
+	ttf-jetbrains-mono-nerd thefuck xclip \
 	go bottom discord qbittorrent
 checkAndLogError $? "Failed to install packages."
 
