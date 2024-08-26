@@ -43,7 +43,6 @@ xsetroot -cursor_name left_ptr
 
 # Polybar
 killall -q polybar
-sleep 1
 polybar &
 
 # Set layout update
