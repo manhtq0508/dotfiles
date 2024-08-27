@@ -25,7 +25,7 @@ main = xmonad
 myConfig = def
     { modMask    = mod4Mask      -- Rebind Mod to the Super key
     , layoutHook = avoidStruts 
-	$ spacingRaw True (Border 10 10 10 10) True (Border 10 10 10 10) True
+	$ spacingRaw True (Border 5 5 5 5) True (Border 5 5 5 5) True
 	$ myLayout      -- Use custom layouts
     , manageHook = myManageHook  -- Match on certain windows
 	, terminal = "kitty"
