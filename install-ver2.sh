@@ -50,7 +50,7 @@ function checkAndLogError {
 
 # Pacman
 echo -e "\e[32m [ INFO ] Installing pacman packages \e[0m"
-sudo pacman -Syu && sudo pacman -S --needed --noconfirm \
+sudo pacman -Syu && sudo pacman -S --needed \
     neofetch ripgrep fzf git base-devel bat \
     eza feh firefox github-cli kitty \
     xf86-input-libinput xorg-xinput \
@@ -62,9 +62,9 @@ sudo pacman -Syu && sudo pacman -S --needed --noconfirm \
     go bottom discord qbittorrent \
     xorg-server xorg-apps xorg-xinit xorg-xmessage \
     libx11 libxft libxinerama libxrandr libxss \
-    pkgconf \
+    pkgconf alacritty \
     bluez bluez-utils blueman \
-    gnome-themes-extra ksnip mpv dunst | tee -a "$LOG_DIR"
+    gnome-themes-extra ksnip mpv dunst calcurse | tee -a "$LOG_DIR"
     checkAndLogError $? "Failed to install pacman packages"
 
 sudo npm install -g neovim
@@ -73,14 +73,14 @@ sudo npm install -g neovim
 echo -e "\e[32m [ INFO ] Install yay \e[0m"
 git clone https://aur.archlinux.org/yay.git "$HOME/yay"
 cd "$HOME/yay"
-makepkg -si --noconfirm
+makepkg -si
 checkAndLogError $? "Failed to build and install yay."
 cd "$HOME/dotfiles"
 sudo rm -rf "$HOME/yay"
 
 # Yay packages
 echo -e "\e[32m [ INFO ] Installing yay packages \e[0m"
-yay -S --needed --noconfirm \
+yay -S --needed \
     python-pynput \
     bluetuith \
     adwaita-qt5-git \
@@ -211,7 +211,7 @@ checkAndLogError $? "Failed to enable Bluetooth service."
 # ======================================================== #
 
 # Install ibus
-sudo pacman -S --needed --noconfirm ibus
+sudo pacman -S --needed ibus
 checkAndLogError $? "Failed to install ibus."
 
 # Config ibus
@@ -230,6 +230,18 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/BambooEngine/ibus-bamboo
 
 # Restart ibus
 ibus restart
+
+# ======================================================== #
+
+
+# ======================================================== #
+#                       Biến môi trường
+# ======================================================== #
+
+# Cập nhật biến môi trường
+echo -e "\e[32m [ INFO ] Update environment variables \e[0m"
+echo -e "TERMINAL=kitty\nSHELL=zsh" | sudo tee -a /etc/environment
+checkAndLogError $? "Failed to update environment variables."
 
 # ======================================================== #
 
