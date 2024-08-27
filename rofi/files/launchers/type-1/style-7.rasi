@@ -9,12 +9,13 @@
 
 /*****----- Configuration -----*****/
 configuration {
-	modi:                       "drun,run,filebrowser,window";
+	modi:                       "drun,run,filebrowser,window,clipboard:greenclip print";
     show-icons:                 true;
     display-drun:               " Apps";
     display-run:                " Run";
     display-filebrowser:        " Files";
     display-window:             " Windows";
+	display-clipboard:			" Clipboard";
 	drun-display-format:        "{name}";
 	window-format:              "{w} · {c} · {t}";
 }

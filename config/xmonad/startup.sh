@@ -20,6 +20,9 @@ killall -q update_layout.py
 # Ibus-daemon
 ibus-daemon -rxRd
 
+# Clipboard Manager
+greenclip daemon &
+
 # Network Manager Applet
 if [ -x /usr/bin/nm-applet ]; then
     nm-applet --sm-disable &
