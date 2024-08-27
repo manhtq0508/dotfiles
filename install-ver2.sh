@@ -55,7 +55,7 @@ sudo pacman -Syu && sudo pacman -S --needed \
     eza feh firefox github-cli kitty \
     xf86-input-libinput xorg-xinput imv \
     network-manager-applet nodejs npm picom \
-    polybar pulseaudio pulseaudio-bluetooth \
+    polybar pulseaudio pulseaudio-bluetooth mupdf \
     python-pynvim rofi xdg-utils zoxide zsh \
     noto-fonts noto-fonts-extra noto-fonts-emoji ttf-croscore \
     ttf-jetbrains-mono-nerd thefuck xclip rofi-emoji \
