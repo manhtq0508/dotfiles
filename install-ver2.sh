@@ -53,7 +53,7 @@ echo -e "\e[32m [ INFO ] Installing pacman packages \e[0m"
 sudo pacman -Syu && sudo pacman -S --needed \
     neofetch ripgrep fzf git base-devel bat \
     eza feh firefox github-cli kitty \
-    xf86-input-libinput xorg-xinput \
+    xf86-input-libinput xorg-xinput imv \
     network-manager-applet nodejs npm picom \
     polybar pulseaudio pulseaudio-bluetooth \
     python-pynvim rofi xdg-utils zoxide zsh \
