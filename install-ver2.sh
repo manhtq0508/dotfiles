@@ -59,7 +59,7 @@ sudo pacman -Syu && sudo pacman -S --needed \
     python-pynvim rofi xdg-utils zoxide zsh \
     noto-fonts noto-fonts-extra noto-fonts-emoji ttf-croscore \
     ttf-jetbrains-mono-nerd thefuck xclip \
-    go bottom discord qbittorrent vifm pavucontrol \
+    go bottom discord qbittorrent lf pavucontrol \
     xorg-server xorg-apps xorg-xinit xorg-xmessage \
     libx11 libxft libxinerama libxrandr libxss \
     pkgconf alacritty wget curl unzip spotify-launcher \
