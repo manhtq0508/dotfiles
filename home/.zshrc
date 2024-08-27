@@ -18,7 +18,7 @@ export QT_STYLE_OVERRIDE=Adwaita-Dark
 
 # Oh My Zsh configuration
 export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="jonathan"
+ZSH_THEME="crcandy"
 
 zstyle ':omz:update' mode reminder
 zstyle ':omz:update' frequency 13
