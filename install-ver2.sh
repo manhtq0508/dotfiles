@@ -52,7 +52,7 @@ function checkAndLogError {
 echo -e "\e[32m [ INFO ] Installing pacman packages \e[0m"
 sudo pacman -Syu && sudo pacman -S --needed \
     neofetch ripgrep fzf git base-devel bat \
-    eza feh firefox github-cli kitty \
+    eza feh firefox github-cli kitty brightnessctl \
     xf86-input-libinput xorg-xinput imv \
     network-manager-applet nodejs npm picom \
     polybar pulseaudio pulseaudio-bluetooth mupdf \

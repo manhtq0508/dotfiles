@@ -19,7 +19,7 @@ main :: IO ()
 main = xmonad
      . ewmhFullscreen
      . ewmh
-	 . docks
+     . docks
      $ myConfig
 
 myConfig = def
@@ -42,6 +42,8 @@ myConfig = def
     , ("<XF86AudioPlay>", spawn "playerctl play-pause")
     , ("<XF86AudioPrev>", spawn "playerctl previous")
     , ("<XF86AudioNext>", spawn "playerctl next")
+    , ("<XF86MonBrightnessUp>", spawn "brightnessctl set +5%")
+    , ("<XF86MonBrightnessDown>", spawn "brightnessctl set 5%-")
     ]
 
 myManageHook :: ManageHook
