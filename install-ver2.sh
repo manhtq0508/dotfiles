@@ -59,7 +59,7 @@ sudo pacman -Syu && sudo pacman -S --needed \
     python-pynvim rofi xdg-utils zoxide zsh \
     noto-fonts noto-fonts-extra noto-fonts-emoji ttf-croscore \
     ttf-jetbrains-mono-nerd thefuck xclip \
-    go bottom discord qbittorrent vifm \
+    go bottom discord qbittorrent vifm pavucontrol \
     xorg-server xorg-apps xorg-xinit xorg-xmessage \
     libx11 libxft libxinerama libxrandr libxss \
     pkgconf alacritty wget curl unzip spotify-launcher \
@@ -93,7 +93,7 @@ yay -S --needed \
 # Cài đặt Oh My Zsh
 echo -e "\e[32m [ INFO ] Oh-my-zsh \e[0m"
 cd "$HOME"
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" | tee -a "$LOG_DIR"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 checkAndLogError $? "Failed to install Oh-my-zsh."
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions | tee -a "$LOG_DIR"
 checkAndLogError $? "Failed to clone zsh-autosuggestions."
@@ -256,6 +256,3 @@ if [ $errorCount -gt 0 ]; then
 else
     echo -e "\e[32m [ INFO ] No errors encountered. \e[0m"
 fi
-
-# NOTE:
-echo "Cần cấu hình notification (oke: dunst)"
