@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Wallpaper
-feh --bg-fill --no-fehbg ~/.config/wallpapers/wallpaper-1.jpg
+feh --bg-fill --no-fehbg ~/.local/share/wallpapers/wallpaper-1.jpg
 
 # Rounded corner
 picom &
@@ -15,7 +15,7 @@ polybar &
 
 # Set layout update
 killall -q update_layout.py
-~/.config/polybar/update_layout.py &
+~/.local/bin/update_layout.py &
 
 # Ibus-daemon
 ibus-daemon -rxRd

@@ -53,7 +53,7 @@ myManageHook = composeAll
 
 myStartupHook :: X ()
 myStartupHook = do 
-    spawnOnce "~/.config/xmonad/startup.sh"
+    spawnOnce "~/.local/bin/startup.sh"
 
 myLayout = tiled ||| Mirror tiled ||| Full ||| threeCol
   where
