@@ -6,10 +6,10 @@ import os
 try:
     from pynput import keyboard
 except ImportError:
-    os.system("echo pynput not isntalled >> ~/.config/polybar/layout.tmp")
+    os.system("echo pynput not isntalled >> /tmp/layout.tmp")
     os.exit(0)
 
-FILE = str(Path("~/.config/polybar/layout.tmp").expanduser())
+FILE = "/tmp/layout.tmp"
 
 # pynput bắt phím alt trong tổ hợp Shift + Alt là <65511> nên phải xử lý thêm 1 trường hợp
 SPECIAL_ALT_KEYCODE = "<65511>"
