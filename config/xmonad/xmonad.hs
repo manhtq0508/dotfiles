@@ -36,6 +36,12 @@ myConfig = def
 	, ("M-p", spawn "polybar-msg cmd restart")
 	, ("C-S-<Space>", spawn "~/.config/rofi/launchers/type-1/launcher.sh")
 	, ("M-S-s", spawn "ksnip -r")
+    , ("<XF86AudioMute>", spawn "pactl set-sink-mute 0 toggle")
+    , ("<XF86AudioLowerVolume>", spawn "pactl set-sink-mute 0 false && pactl set-sink-volume 0 -1%")
+    , ("<XF86AudioRaiseVolume>", spawn "pactl set-sink-mute 0 false && pactl set-sink-volume 0 +1%")
+    , ("<XF86AudioPlay>", spawn "playerctl play-pause")
+    , ("<XF86AudioPrev>", spawn "playerctl previous")
+    , ("<XF86AudioNext>", spawn "playerctl next")
     ]
 
 myManageHook :: ManageHook
