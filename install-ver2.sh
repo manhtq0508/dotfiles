@@ -58,7 +58,7 @@ sudo pacman -Syu && sudo pacman -S --needed \
     polybar pulseaudio pulseaudio-bluetooth \
     python-pynvim rofi xdg-utils zoxide zsh \
     noto-fonts noto-fonts-extra noto-fonts-emoji ttf-croscore \
-    ttf-jetbrains-mono-nerd thefuck xclip \
+    ttf-jetbrains-mono-nerd thefuck xclip rofi-emoji \
     go bottom discord qbittorrent lf pavucontrol \
     xorg-server xorg-apps xorg-xinit xorg-xmessage \
     libx11 libxft libxinerama libxrandr libxss \
