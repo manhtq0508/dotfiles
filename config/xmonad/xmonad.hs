@@ -6,6 +6,7 @@ import XMonad.Hooks.ManageHelpers
 
 import XMonad.Util.EZConfig
 import XMonad.Util.Loggers
+import XMonad.Util.SpawnOnce
 
 import XMonad.Layout.Magnifier
 import XMonad.Layout.ThreeColumns
@@ -28,11 +29,13 @@ myConfig = def
 	$ myLayout      -- Use custom layouts
     , manageHook = myManageHook  -- Match on certain windows
 	, terminal = "kitty"
+	, startupHook = myStartupHook
     }
   `additionalKeysP`
     [ ("M-f"  , spawn "firefox"                   )
 	, ("M-p", spawn "polybar-msg cmd restart")
 	, ("C-S-<Space>", spawn "~/.config/rofi/launchers/type-1/launcher.sh")
+	, ("M-S-s", spawn "ksnip -r")
     ]
 
 myManageHook :: ManageHook
@@ -40,6 +43,10 @@ myManageHook = composeAll
     [ className =? "Gimp" --> doFloat
     , isDialog            --> doFloat
     ]
+
+myStartupHook :: X ()
+myStartupHook = do 
+    spawnOnce "~/.config/xmonad/startup.sh"
 
 myLayout = tiled ||| Mirror tiled ||| Full ||| threeCol
   where

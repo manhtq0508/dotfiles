@@ -24,7 +24,7 @@ fi
 # ======================================================== #
 
 # Log dir
-LOG_DIR="$HOME/dotfiles/logs"
+LOG_DIR="$HOME/dotfiles/logs.log"
 
 # Khởi tạo biến toàn cục
 errorCount=0

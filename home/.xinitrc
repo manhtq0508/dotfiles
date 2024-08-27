@@ -31,33 +31,6 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
     done
     unset f
 fi
-
-# Wallpaper
-feh --bg-fill --no-fehbg ~/.config/wallpapers/wallpaper-1.jpg
-
-# Rounded corner
-picom &
-
-# Cursor
-xsetroot -cursor_name left_ptr
-
-# Polybar
-killall -q polybar
-polybar &
-
-# Set layout update
-killall -q update_layout.py
-~/.config/polybar/update_layout.py &
-
-# Network Manager Applet
-if [ -x /usr/bin/nm-applet ]; then
-    nm-applet --sm-disable &
-fi
-
-# Bluetooth Applet
-if [ -x /usr/bin/blueman-applet ]; then
-    blueman-applet &
-fi
-
+#
 # Start XMonad
 exec xmonad
