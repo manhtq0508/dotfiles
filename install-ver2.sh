@@ -62,7 +62,7 @@ sudo pacman -Syu && sudo pacman -S --needed \
     go bottom discord qbittorrent \
     xorg-server xorg-apps xorg-xinit xorg-xmessage \
     libx11 libxft libxinerama libxrandr libxss \
-    pkgconf alacritty wget curl unzip \
+    pkgconf alacritty wget curl unzip spotify-launcher \
     bluez bluez-utils blueman \
     gnome-themes-extra ksnip mpv dunst calcurse | tee -a "$LOG_DIR"
     checkAndLogError $? "Failed to install pacman packages"
