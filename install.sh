@@ -63,7 +63,7 @@ sudo pacman -Syu && sudo pacman -S --needed \
     xorg-server xorg-apps xorg-xinit xorg-xmessage pacman-contrib \
     libx11 libxft libxinerama libxrandr libxss \
     pkgconf alacritty wget curl unzip spotify-launcher \
-    bluez bluez-utils blueman neovide playerctl \
+    bluez bluez-utils blueman neovide playerctl obs-studio \
     gnome-themes-extra ksnip mpv dunst calcurse | tee -a "$LOG_DIR"
     checkAndLogError $? "Failed to install pacman packages"
 
@@ -85,7 +85,6 @@ yay -S --needed \
     bluetuith \
     adwaita-qt5-git \
     adwaita-qt6-git \
-    obs-studio-browser \
     visual-studio-code-bin
 	rofi-greenclip | tee -a "$LOG_DIR"
     checkAndLogError $? "Failed to install yay packages"
