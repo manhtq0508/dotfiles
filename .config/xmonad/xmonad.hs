@@ -36,6 +36,8 @@ myConfig = def
 	, ("M-p", spawn "polybar-msg cmd restart")
 	, ("C-S-<Space>", spawn "~/.config/rofi/launchers/type-1/launcher.sh")
 	, ("M-S-s", spawn "ksnip -r")
+    , ("M-S-l", spawn "notify-send -u low 'Betterlockscreen' 'Updating cache' && betterlockscreen -u ~/.local/share/wallpapers")
+    , ("M-l", spawn "betterlockscreen -l blur --off 60")
     , ("<XF86AudioMute>", spawn "pactl set-sink-mute 0 toggle")
     , ("<XF86AudioLowerVolume>", spawn "pactl set-sink-mute 0 false && pactl set-sink-volume 0 -1%")
     , ("<XF86AudioRaiseVolume>", spawn "pactl set-sink-mute 0 false && pactl set-sink-volume 0 +1%")

@@ -64,7 +64,9 @@ sudo pacman -Syu && sudo pacman -S --needed \
     libx11 libxft libxinerama libxrandr libxss whois \
     pkgconf alacritty wget curl zip unzip spotify-launcher \
     bluez bluez-utils blueman neovide playerctl obs-studio \
-    gnome-themes-extra ksnip mpv dunst calcurse tree less
+    gnome-themes-extra ksnip mpv dunst calcurse tree less \
+	xorg-xdpyinfo xorg-xrandr xorg-xrdb xorg-xset imagemagick \
+	bc locate
     checkAndLogError $? "Failed to install pacman packages"
 
 sudo npm install -g neovim
@@ -86,7 +88,9 @@ yay -S --needed \
     adwaita-qt5-git \
     adwaita-qt6-git \
     visual-studio-code-bin \
-    rofi-greenclip | tee -a "$LOG_DIR"
+    rofi-greenclip \
+	i3lock-color \
+	betterlockscreen 
     checkAndLogError $? "Failed to install yay packages"
 
 # Cài đặt Oh My Zsh
