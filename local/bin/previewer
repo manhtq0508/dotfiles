@@ -1,6 +1,0 @@
-#!/bin/sh
-
-# Script for lf to preview using bat correctly
-
-unset COLORTERM
-bat -p --color=always "$1"
