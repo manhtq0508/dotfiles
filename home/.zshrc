@@ -9,7 +9,7 @@ function check_command() {
 check_command "neofetch" "neofetch"
 
 [ -f "$HOME/.ghcup/env" ] && . "$HOME/.ghcup/env" # ghcup-env
-export PATH="$PATH:/usr/local/bin:/usr/local/sbin:/opt/bin:$HOME/.local/bin:$HOME/bin"
+export PATH="$PATH:/usr/local/bin:/usr/local/sbin:/opt/bin:$HOME/.local/bin:$HOME/bin:$HOME/.cargo/bin"
 
 # Setup dark theme
 export GTK_THEME=Adwaita:dark

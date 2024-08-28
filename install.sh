@@ -44,6 +44,10 @@ function checkAndLogError {
 # ======================================================== #
 
 
+# Không cần sử dụng "source ~/.bashrc" nữa
+export PATH="$PATH:/usr/local/bin:/usr/local/sbin:/opt/bin:$HOME/.local/bin:$HOME/bin:$HOME/.cargo/bin"
+
+
 # ======================================================== #
 #                 Cài đặt các gói cần thiết
 # ======================================================== #
@@ -69,7 +73,14 @@ sudo pacman -Syu && sudo pacman -S --needed \
 	bc locate xfc4-power-manager libreoffice-fresh
     checkAndLogError $? "Failed to install pacman packages"
 
+# Rust
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+checkAndLogError $? "Failed to install Rust"
+cargo install trashy
+checkAndLogError $? "Failed to install trashy"
+
 sudo npm install -g neovim
+checkAndLogError $? "Failed to install neovim (npm)"
 
 # Cài đặt yay
 echo -e "\e[32m [ INFO ] Install yay \e[0m"
@@ -102,10 +113,6 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$HOME/.
 checkAndLogError $? "Failed to clone zsh-autosuggestions."
 
 # ======================================================== #
-
-
-# Không cần sử dụng "source ~/.bashrc" nữa
-export PATH="$PATH:/usr/local/bin:/usr/local/sbin:/opt/bin:$HOME/.local/bin:$HOME/bin"
 
 
 # ======================================================== #

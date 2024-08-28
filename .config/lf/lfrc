@@ -43,7 +43,7 @@ cmd trash ${{
   while [ "$files" ]; do
     file=${files%%;*}
 
-    trashy put "$(basename "$file")"
+    trash put "$(basename "$file")"
     if [ "$files" = "$file" ]; then
       files=''
     else
@@ -111,9 +111,9 @@ map ae $wine "$f"
 # Basic Functions
 map . set hidden!
 map dd trash
-map u $trashy restore -r 0
-map dr $trashy restore
-map de $trashy empty --all
+map u $trash restore -r 0
+map dr $trash restore
+map de $trash empty --all
 map p paste
 map x cut
 map y copy
