@@ -63,7 +63,7 @@ sudo pacman -Syu && sudo pacman -S --needed \
     xorg-server xorg-apps xorg-xinit xorg-xmessage \
     libx11 libxft libxinerama libxrandr libxss \
     pkgconf alacritty wget curl unzip spotify-launcher \
-    bluez bluez-utils blueman nemo neovide playerctl \
+    bluez bluez-utils blueman neovide playerctl \
     gnome-themes-extra ksnip mpv dunst calcurse | tee -a "$LOG_DIR"
     checkAndLogError $? "Failed to install pacman packages"
 
