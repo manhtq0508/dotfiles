@@ -61,10 +61,10 @@ sudo pacman -Syu && sudo pacman -S --needed \
     ttf-jetbrains-mono-nerd thefuck xclip rofi-emoji \
     go bottom discord qbittorrent lf pavucontrol cronie \
     xorg-server xorg-apps xorg-xinit xorg-xmessage pacman-contrib \
-    libx11 libxft libxinerama libxrandr libxss \
-    pkgconf alacritty wget curl unzip spotify-launcher \
+    libx11 libxft libxinerama libxrandr libxss whois \
+    pkgconf alacritty wget curl zip unzip spotify-launcher \
     bluez bluez-utils blueman neovide playerctl obs-studio \
-    gnome-themes-extra ksnip mpv dunst calcurse | tee -a "$LOG_DIR"
+    gnome-themes-extra ksnip mpv dunst calcurse tree less
     checkAndLogError $? "Failed to install pacman packages"
 
 sudo npm install -g neovim
