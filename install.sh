@@ -57,7 +57,7 @@ sudo pacman -Syu && sudo pacman -S --needed \
     network-manager-applet nodejs npm picom \
     polybar pulseaudio pulseaudio-bluetooth mupdf \
     python-pynvim rofi xdg-utils zoxide zsh acpi \
-    noto-fonts noto-fonts-extra noto-fonts-emoji ttf-croscore \
+    noto-fonts noto-fonts-extra noto-fonts-emoji noto-fonts-cjk ttf-croscore \
     ttf-jetbrains-mono-nerd thefuck xclip rofi-emoji \
     go bottom discord qbittorrent lf pavucontrol cronie \
     xorg-server xorg-apps xorg-xinit xorg-xmessage pacman-contrib \
@@ -85,8 +85,8 @@ yay -S --needed \
     bluetuith \
     adwaita-qt5-git \
     adwaita-qt6-git \
-    visual-studio-code-bin
-	rofi-greenclip | tee -a "$LOG_DIR"
+    visual-studio-code-bin \
+    rofi-greenclip | tee -a "$LOG_DIR"
     checkAndLogError $? "Failed to install yay packages"
 
 # Cài đặt Oh My Zsh
