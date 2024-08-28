@@ -23,6 +23,9 @@ ibus-daemon -rxRd
 # Clipboard Manager
 greenclip daemon &
 
+# Power manager
+xfce4-power-manager &
+
 # Network Manager Applet
 if [ -x /usr/bin/nm-applet ]; then
     nm-applet --sm-disable &

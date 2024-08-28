@@ -66,7 +66,7 @@ sudo pacman -Syu && sudo pacman -S --needed \
     bluez bluez-utils blueman neovide playerctl obs-studio \
     gnome-themes-extra ksnip mpv dunst calcurse tree less \
 	xorg-xdpyinfo xorg-xrandr xorg-xrdb xorg-xset imagemagick \
-	bc locate
+	bc locate xfc4-power-manager libreoffice-fresh
     checkAndLogError $? "Failed to install pacman packages"
 
 sudo npm install -g neovim
@@ -90,7 +90,7 @@ yay -S --needed \
     visual-studio-code-bin \
     rofi-greenclip \
 	i3lock-color \
-	betterlockscreen 
+	betterlockscreen
     checkAndLogError $? "Failed to install yay packages"
 
 # Cài đặt Oh My Zsh
@@ -202,18 +202,6 @@ sudo modprobe btusb
 sudo systemctl enable bluetooth
 sudo systemctl start bluetooth
 checkAndLogError $? "Failed to enable Bluetooth service."
-
-# ======================================================== #
-
-
-# ======================================================== #
-#                       Power alert
-# ======================================================== #
-
-echo -e "\e[32m [ INFO ] Enable battery alert \e[0m"
-systemctl --user enable $HOME/.config/systemd/user/battery-alert.timer
-systemctl --user start $HOME/.config/systemd/user/battery-alert.timer
-checkAndLogError $? "Failed to enable Bluetooth service, battery alert."
 
 # ======================================================== #
 
