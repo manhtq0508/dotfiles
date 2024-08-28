@@ -87,7 +87,8 @@ yay -S --needed \
     adwaita-qt6-git \
     obs-studio-browser \
     visual-studio-code-bin
-	rofi-greenclip | tee -a "$LOG_DIR"
+	rofi-greenclip \
+	poweralertd | tee -a "$LOG_DIR"
     checkAndLogError $? "Failed to install yay packages"
 
 # Cài đặt Oh My Zsh

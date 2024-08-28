@@ -28,6 +28,9 @@ if [ -x /usr/bin/nm-applet ]; then
     nm-applet --sm-disable &
 fi
 
+# Power alert
+poweralertd &
+
 # Bluetooth Applet
 if [ -x /usr/bin/blueman-applet ]; then
     blueman-applet &
