@@ -52,7 +52,7 @@ check_command "zoxide" 'eval "$(zoxide init zsh)"'
 # default apps
 export EDITOR="nvim"
 export VISUAL="nvim"
-export TERMINAL="foot"
+export TERMINAL="kitty"
 export BROWSER="firefox"
 
 # default folders

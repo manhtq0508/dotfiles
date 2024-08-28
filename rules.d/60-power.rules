@@ -1,0 +1,2 @@
+ACTION=="change", SUBSYSTEM=="power_supply", ATTR{type}=="Mains", ATTR{online}=="0", ENV{DISPLAY}=":0", ENV{XAUTHORITY}="/home/manhtq/.Xauthority" RUN+="/usr/bin/su manhtq -c '/home/manhtq/.local/bin/battery-charging discharging'"
+ACTION=="change", SUBSYSTEM=="power_supply", ATTR{type}=="Mains", ATTR{online}=="1", ENV{DISPLAY}=":0", ENV{XAUTHORITY}="/home/manhtq/.Xauthority" RUN+="/usr/bin/su manhtq -c '/home/manhtq/.local/bin/battery-charging charging'"
