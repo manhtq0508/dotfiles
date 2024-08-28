@@ -109,7 +109,7 @@ echo -e "\e[32m [ INFO ] Oh-my-zsh \e[0m"
 cd "$HOME"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 checkAndLogError $? "Failed to install Oh-my-zsh."
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions | tee -a "$LOG_DIR"
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions 
 checkAndLogError $? "Failed to clone zsh-autosuggestions."
 
 # ======================================================== #
