@@ -71,7 +71,7 @@ sudo pacman -Syu && sudo pacman -S --needed \
     gnome-themes-extra ksnip mpv dunst calcurse tree less \
 	xorg-xdpyinfo xorg-xrandr xorg-xrdb xorg-xset imagemagick \
 	bc xfc4-power-manager libreoffice-fresh bluez-obex
-    checkAndLogError $? "Failed to install pacman packages"
+checkAndLogError $? "Failed to install pacman packages"
 
 # Rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -102,7 +102,7 @@ yay -S --needed \
     rofi-greenclip \
     i3lock-color \
     betterlockscreen
-    checkAndLogError $? "Failed to install yay packages"
+checkAndLogError $? "Failed to install yay packages"
 
 # Cài đặt Oh My Zsh
 echo -e "\e[32m [ INFO ] Oh-my-zsh \e[0m"
