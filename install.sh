@@ -58,7 +58,7 @@ sudo pacman -Syu && sudo pacman -S --needed \
     neofetch ripgrep fzf git base-devel bat \
     eza feh firefox github-cli kitty brightnessctl \
     xf86-input-libinput xorg-xinput imv libnotify \
-    network-manager-applet nodejs npm picom \
+    network-manager-applet nodejs npm picom nemo \
     polybar pulseaudio pulseaudio-bluetooth mupdf \
     python-pynvim rofi xdg-utils zoxide zsh acpi \
     noto-fonts noto-fonts-extra noto-fonts-emoji noto-fonts-cjk ttf-croscore \
