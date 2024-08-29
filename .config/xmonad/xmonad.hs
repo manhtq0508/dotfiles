@@ -1,6 +1,9 @@
 import XMonad
 
+import XMonad.Actions.FloatKeys
 import qualified XMonad.Actions.FlexibleResize as Flex
+
+import Data.Ratio ((%))
 
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
@@ -28,7 +31,7 @@ main = xmonad
 myConfig = def
     { modMask    = mod4Mask      -- Rebind Mod to the Super key
     , layoutHook = avoidStruts 
-	$ spacingRaw True (Border 5 5 5 5) True (Border 5 5 5 5) True
+    $ spacingRaw True (Border 5 5 5 5) True (Border 5 5 5 5) True
 	$ myLayout      -- Use custom layouts
     , manageHook = myManageHook  -- Match on certain windows
 	, terminal = "kitty"
@@ -39,6 +42,7 @@ myConfig = def
 	, ("M-p", spawn "polybar-msg cmd restart")
 	, ("C-S-<Space>", spawn "~/.config/rofi/launchers/type-1/launcher.sh")
 	, ("M-S-s", spawn "ksnip -r")
+    , ("M-S-f", spawn "ksnip -m && notify-send -u normal 'Ksnip' 'Full screen captured'")
     , ("M-S-l", spawn "betterlockscreen -l blur --off 60")
     , ("<XF86AudioMute>", spawn "pactl set-sink-mute 0 toggle")
     , ("<XF86AudioLowerVolume>", spawn "pactl set-sink-mute 0 false && pactl set-sink-volume 0 -1%")
@@ -50,6 +54,15 @@ myConfig = def
     , ("<XF86MonBrightnessDown>", spawn "brightnessctl set 5%-")
     , ("M-a", sendMessage MirrorShrink)
     , ("M-z", sendMessage MirrorExpand)
+    , ("M-c", withFocused (keysMoveWindowTo (683,384) (1%2,1%2)))
+    , ("M-<Left>", withFocused (keysMoveWindow (-20,0)))
+    , ("M-<Right>", withFocused (keysMoveWindow (20,0)))
+    , ("M-<Up>", withFocused (keysMoveWindow (0,-20)))
+    , ("M-<Down>", withFocused (keysMoveWindow (0,20)))
+    , ("M-S-<Left>", withFocused (keysResizeWindow (-20,0) (0,0)))
+    , ("M-S-<Right>", withFocused (keysResizeWindow (20,0) (0,0)))
+    , ("M-S-<Up>", withFocused (keysResizeWindow (0,-20) (0,0)))
+    , ("M-S-<Down>", withFocused (keysResizeWindow (0,20) (0,0)))
     ]
   `additionalMouseBindings`
     [ ((mod4Mask, button3), (\w -> focus w >> Flex.mouseResizeWindow w))
