@@ -1,5 +1,9 @@
 import XMonad
 
+import XMonad.Actions.NoBorders
+import XMonad.Actions.TiledWindowDragging
+import XMonad.Layout.DraggingVisualizer
+
 import XMonad.Actions.FloatKeys
 import qualified XMonad.Actions.FlexibleResize as Flex
 
@@ -34,6 +38,7 @@ main = xmonad
 myConfig = def
     { modMask    = mod4Mask      -- Rebind Mod to the Super key
     , layoutHook = minimize . BW.boringWindows
+    $ draggingVisualizer
     $ avoidStruts 
     $ spacingRaw True (Border 5 5 5 5) True (Border 5 5 5 5) True
 	$ myLayout      -- Use custom layouts
@@ -47,6 +52,7 @@ myConfig = def
     , ("M-S-p", spawn "polybar-msg cmd toggle")
 	, ("M-m", withFocused minimizeWindow)
     , ("M-S-m", withLastMinimized maximizeWindow)
+    , ("M-g", withFocused toggleBorder)
 	, ("C-S-<Space>", spawn "~/.config/rofi/launchers/type-1/launcher.sh")
 	, ("M-S-s", spawn "ksnip -r")
     , ("M-S-f", spawn "ksnip -m && notify-send -u normal 'Ksnip' 'Full screen captured'")
@@ -73,6 +79,7 @@ myConfig = def
     ]
   `additionalMouseBindings`
     [ ((mod4Mask, button3), (\w -> focus w >> Flex.mouseResizeWindow w))
+    , ((mod4Mask .|. shiftMask, button1), dragWindow)
 	]
 
 myManageHook :: ManageHook
