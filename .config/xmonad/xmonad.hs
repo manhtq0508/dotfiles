@@ -41,20 +41,20 @@ myConfig = def
     $ draggingVisualizer
     $ avoidStruts 
     $ spacingRaw True (Border 5 5 5 5) True (Border 5 5 5 5) True
-	$ myLayout      -- Use custom layouts
+    $ myLayout      -- Use custom layouts
     , manageHook = myManageHook  -- Match on certain windows
-	, terminal = "kitty"
-	, startupHook = myStartupHook
+    , terminal = "kitty"
+    , startupHook = myStartupHook
     }
   `additionalKeysP`
     [ ("M-f"  , spawn "firefox"                   )
-	, ("M-p", spawn "polybar-msg cmd restart")
+    , ("M-p", spawn "polybar-msg cmd restart")
     , ("M-S-p", spawn "polybar-msg cmd toggle")
-	, ("M-m", withFocused minimizeWindow)
+    , ("M-m", withFocused minimizeWindow)
     , ("M-S-m", withLastMinimized maximizeWindow)
     , ("M-g", withFocused toggleBorder)
-	, ("C-S-<Space>", spawn "~/.config/rofi/launcher.sh")
-	, ("M-S-s", spawn "ksnip -r")
+    , ("C-S-<Space>", spawn "~/.config/rofi/launcher.sh")
+    , ("M-S-s", spawn "ksnip -r")
     , ("M-S-f", spawn "ksnip -m && notify-send -u normal 'Ksnip' 'Full screen captured'")
     , ("M-S-l", spawn "betterlockscreen -l blur --off 60")
     , ("<XF86AudioMute>", spawn "pactl set-sink-mute 0 toggle")
@@ -80,7 +80,7 @@ myConfig = def
   `additionalMouseBindings`
     [ ((mod4Mask, button3), (\w -> focus w >> Flex.mouseResizeWindow w))
     , ((mod4Mask .|. shiftMask, button1), dragWindow)
-	]
+    ]
 
 myManageHook :: ManageHook
 myManageHook = composeAll
