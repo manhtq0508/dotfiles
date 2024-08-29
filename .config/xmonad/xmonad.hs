@@ -20,6 +20,9 @@ import XMonad.Layout.ResizableTile
 
 import XMonad.Hooks.EwmhDesktops
 
+import XMonad.Actions.Minimize
+import XMonad.Layout.Minimize
+import qualified XMonad.Layout.BoringWindows as BW
 
 main :: IO ()
 main = xmonad
@@ -30,7 +33,8 @@ main = xmonad
 
 myConfig = def
     { modMask    = mod4Mask      -- Rebind Mod to the Super key
-    , layoutHook = avoidStruts 
+    , layoutHook = minimize . BW.boringWindows
+    $ avoidStruts 
     $ spacingRaw True (Border 5 5 5 5) True (Border 5 5 5 5) True
 	$ myLayout      -- Use custom layouts
     , manageHook = myManageHook  -- Match on certain windows
@@ -40,6 +44,9 @@ myConfig = def
   `additionalKeysP`
     [ ("M-f"  , spawn "firefox"                   )
 	, ("M-p", spawn "polybar-msg cmd restart")
+    , ("M-S-p", spawn "polybar-msg cmd toggle")
+	, ("M-m", withFocused minimizeWindow)
+    , ("M-S-m", withLastMinimized maximizeWindow)
 	, ("C-S-<Space>", spawn "~/.config/rofi/launchers/type-1/launcher.sh")
 	, ("M-S-s", spawn "ksnip -r")
     , ("M-S-f", spawn "ksnip -m && notify-send -u normal 'Ksnip' 'Full screen captured'")
