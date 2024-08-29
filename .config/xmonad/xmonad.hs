@@ -11,6 +11,7 @@ import XMonad.Util.SpawnOnce
 import XMonad.Layout.Magnifier
 import XMonad.Layout.ThreeColumns
 import XMonad.Layout.Spacing
+import XMonad.Layout.ResizableTile
 
 import XMonad.Hooks.EwmhDesktops
 
@@ -36,16 +37,17 @@ myConfig = def
 	, ("M-p", spawn "polybar-msg cmd restart")
 	, ("C-S-<Space>", spawn "~/.config/rofi/launchers/type-1/launcher.sh")
 	, ("M-S-s", spawn "ksnip -r")
-    , ("M-S-l", spawn "notify-send -u low 'Betterlockscreen' 'Updating cache' && betterlockscreen -u ~/.local/share/wallpapers")
-    , ("M-l", spawn "betterlockscreen -l blur --off 60")
+    , ("M-S-l", spawn "betterlockscreen -l blur --off 60")
     , ("<XF86AudioMute>", spawn "pactl set-sink-mute 0 toggle")
     , ("<XF86AudioLowerVolume>", spawn "pactl set-sink-mute 0 false && pactl set-sink-volume 0 -1%")
     , ("<XF86AudioRaiseVolume>", spawn "pactl set-sink-mute 0 false && pactl set-sink-volume 0 +1%")
     , ("<XF86AudioPlay>", spawn "playerctl play-pause")
     , ("<XF86AudioPrev>", spawn "playerctl previous")
     , ("<XF86AudioNext>", spawn "playerctl next")
-    , ("<XF86MonBrightnessUp>", spawn "brightnessctl set +5%")
+    , ("<XF86MonBrightnessUp>", spawn "brightnessctl set 5%+")
     , ("<XF86MonBrightnessDown>", spawn "brightnessctl set 5%-")
+    , ("M-a", sendMessage MirrorShrink)
+    , ("M-z", sendMessage MirrorExpand)
     ]
 
 myManageHook :: ManageHook
@@ -62,8 +64,8 @@ myStartupHook = do
 
 myLayout = tiled ||| Mirror tiled ||| Full ||| threeCol
   where
+    tiled    = ResizableTall nmaster delta ratio []
     threeCol = magnifiercz' 1.3 $ ThreeColMid nmaster delta ratio
-    tiled    = Tall nmaster delta ratio
     nmaster  = 1      -- Default number of windows in the master pane
     ratio    = 1/2    -- Default proportion of screen occupied by master pane
     delta    = 3/100  -- Percent of screen to increment by when resizing panes
