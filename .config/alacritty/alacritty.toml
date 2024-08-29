@@ -1,5 +1,5 @@
 import = [
-	"~/.config/alacritty/dracular_plus.toml"
+	"~/.config/alacritty/hyper.toml"
 ]
 
 shell = "zsh"
