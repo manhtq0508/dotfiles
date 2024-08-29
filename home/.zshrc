@@ -34,6 +34,7 @@ plugins=(
     command-not-found
     colored-man-pages
     gh
+    zsh-syntax-highlighting
 )
 
 source "$ZSH/oh-my-zsh.sh"

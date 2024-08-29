@@ -87,6 +87,7 @@ myManageHook = composeAll
     [ className =? "Gimp" --> doFloat
     , className =? "Blueman-manager" --> doFloat
     , className =? "pavucontrol" --> doFloat
+    , className =? "Conky" --> doIgnore
     , isDialog            --> doFloat
     ]
 

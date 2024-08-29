@@ -70,7 +70,8 @@ sudo pacman -Syu && sudo pacman -S --needed \
     bluez bluez-utils blueman neovide playerctl obs-studio \
     gnome-themes-extra ksnip mpv dunst calcurse tree less \
 	xorg-xdpyinfo xorg-xrandr xorg-xrdb xorg-xset imagemagick \
-	bc locate xfc4-power-manager libreoffice-fresh bluez-obex
+	bc locate xfc4-power-manager libreoffice-fresh bluez-obex \
+	conky
     checkAndLogError $? "Failed to install pacman packages"
 
 # Rust
@@ -111,6 +112,8 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 checkAndLogError $? "Failed to install Oh-my-zsh."
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions 
 checkAndLogError $? "Failed to clone zsh-autosuggestions."
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+checkAndLogError $? "Failed to clone zsh-syntax-highlighting"
 
 # ======================================================== #
 
