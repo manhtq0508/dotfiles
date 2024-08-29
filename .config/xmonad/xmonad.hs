@@ -1,5 +1,7 @@
 import XMonad
 
+import qualified XMonad.Actions.FlexibleResize as Flex
+
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
@@ -49,6 +51,9 @@ myConfig = def
     , ("M-a", sendMessage MirrorShrink)
     , ("M-z", sendMessage MirrorExpand)
     ]
+  `additionalMouseBindings`
+    [ ((mod4Mask, button3), (\w -> focus w >> Flex.mouseResizeWindow w))
+	]
 
 myManageHook :: ManageHook
 myManageHook = composeAll
