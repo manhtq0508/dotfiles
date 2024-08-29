@@ -53,7 +53,7 @@ myConfig = def
 	, ("M-m", withFocused minimizeWindow)
     , ("M-S-m", withLastMinimized maximizeWindow)
     , ("M-g", withFocused toggleBorder)
-	, ("C-S-<Space>", spawn "~/.config/rofi/launchers/type-1/launcher.sh")
+	, ("C-S-<Space>", spawn "~/.config/rofi/launcher.sh")
 	, ("M-S-s", spawn "ksnip -r")
     , ("M-S-f", spawn "ksnip -m && notify-send -u normal 'Ksnip' 'Full screen captured'")
     , ("M-S-l", spawn "betterlockscreen -l blur --off 60")

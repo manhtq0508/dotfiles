@@ -152,12 +152,6 @@ echo -e "\e[32m [ INFO ] Config font \e[0m"
 fc-cache -fv
 checkAndLogError $? "Fail to config font"
 
-# Cấu hình Rofi
-cd "$HOME/dotfiles/rofi"
-chmod +x setup.sh
-./setup.sh
-checkAndLogError $? "Failed to configure Rofi."
-
 # ======================================================== #
 
 
