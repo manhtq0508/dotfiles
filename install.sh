@@ -100,8 +100,8 @@ yay -S --needed \
     adwaita-qt6-git \
     visual-studio-code-bin \
     rofi-greenclip \
-	i3lock-color \
-	betterlockscreen
+    i3lock-color \
+    betterlockscreen
     checkAndLogError $? "Failed to install yay packages"
 
 # Cài đặt Oh My Zsh
