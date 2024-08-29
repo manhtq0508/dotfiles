@@ -70,8 +70,7 @@ sudo pacman -Syu && sudo pacman -S --needed \
     bluez bluez-utils blueman neovide playerctl obs-studio \
     gnome-themes-extra ksnip mpv dunst calcurse tree less \
 	xorg-xdpyinfo xorg-xrandr xorg-xrdb xorg-xset imagemagick \
-	bc locate xfc4-power-manager libreoffice-fresh bluez-obex \
-	conky
+	bc conky xfc4-power-manager libreoffice-fresh bluez-obex
     checkAndLogError $? "Failed to install pacman packages"
 
 # Rust
