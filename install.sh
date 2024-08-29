@@ -123,7 +123,7 @@ checkAndLogError $? "Failed to clone zsh-syntax-highlighting"
 
 # Sao chép các file cấu hình .config, ~
 echo -e "\e[32m [ INFO ] Copy dotfiles and config files \e[0m"
-cd $HOME/dotfiles
+cd "$HOME/dotfiles"
 cp -rf .config "$HOME" | tee -a "$LOG_DIR"
 checkAndLogError $? "Failed to copy .config files"
 cp -rf home/.* "$HOME" | tee -a "$LOG_DIR"
@@ -138,7 +138,7 @@ git config --global init.defaultBranch main
 
 # Cấu hình touchpad
 echo -e "\e[32m [ INFO ] Config touchpad (natural scrolling, tap, etc) \e[0m"
-sudo cp 30-touchpad.conf /etc/X11/xorg.conf.d | tee -a "$LOG_DIR"
+sudo cp 30-touchpad.conf /etc/X11/xorg.conf.d/ | tee -a "$LOG_DIR"
 checkAndLogError $? "Failed to configure touchpad."
 
 # Cấu hình module điều chỉnh độ sáng của Polybar
