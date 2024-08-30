@@ -20,7 +20,7 @@ ACCEPT_MOD_KEYS = { keyboard.Key.cmd,
                     keyboard.Key.space }
 ACCEPT_WORKSPACE_KEYS =  { keyboard.KeyCode.from_char(str(i)) for i in range(1, 10) }
 
-LAYOUT = [ "Tall", "Mirror Tall", "Full", "ThreeCol" ]
+LAYOUT = [ "Tall", "Mirror Tall", "Grid", "Full", "ThreeCol", "Mouse Tall", "Mirror MTall"]
 RESET_LAYOUT_VALUE = -1
 
 workspace = 0

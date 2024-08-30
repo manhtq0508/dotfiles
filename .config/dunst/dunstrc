@@ -31,7 +31,7 @@
     font = JetBrainsMono NFM 10
     line_height = 0
     markup = full
-    format = "<span weight='bold' font='12'>%s</span>\n%b"
+    format = "<span color='#FFFF00' weight='bold' font='14'>%s</span>\n%b"
     alignment = left
     vertical_alignment = center
     show_age_threshold = 60
@@ -64,7 +64,7 @@
     background = "#181825"
     foreground = "#CDD6F4"
     highlight = "#CDD6F4"
-    frame_color = "#000000"
+    frame_color = "#5CE65C"
     timeout = 5
 	default_icon = $HOME/.local/share/icons/dunst/normal.png
 

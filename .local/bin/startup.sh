@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Wallpaper
-feh --bg-fill --no-fehbg ~/.local/share/wallpapers/wallpaper-1.jpg
+feh --bg-fill --no-fehbg --randomize ~/.local/share/wallpapers
 
 # Rounded corner
 picom &
