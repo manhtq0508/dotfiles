@@ -219,6 +219,7 @@ checkAndLogError $? "Failed to enable Bluetooth service."
 #                     Betterlockscreen
 # ======================================================== #
 
+betterlockscreen -u "$HOME/.local/share/wallpapers
 sudo systemctl enable betterlockscreen@manhtq
 checkAndLogError $? "Failed to turn on betterlockscreen"
 
