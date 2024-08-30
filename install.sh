@@ -39,6 +39,8 @@ function checkAndLogError {
         errorCount=$((errorCount + 1))
         errorMessages+=("$message")
         echo -e "\e[31m [ ERROR ] $message \e[0m"
+    else
+        echo -e "\e[32m [ DONE ] \e[0m"
     fi
 }
 
