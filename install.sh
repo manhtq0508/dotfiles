@@ -70,7 +70,7 @@ sudo pacman -Syu && sudo pacman -S --needed \
     bluez bluez-utils blueman neovide playerctl obs-studio \
     gnome-themes-extra ksnip mpv dunst calcurse tree less \
     xorg-xdpyinfo xorg-xrandr xorg-xrdb xorg-xset imagemagick \
-    bc xfc4-power-manager libreoffice-fresh bluez-obex p7zip conky
+    bc xfc4-power-manager libreoffice-fresh bluez-obex p7zip conky \
     libxext xorgproto xcb-util libxcb xcb-util-renderutil \
     xcb-util-image pixman dbus libconfig pcre libev uthash
 checkAndLogError $? "Failed to install pacman packages"
