@@ -213,6 +213,16 @@ checkAndLogError $? "Failed to enable Bluetooth service."
 
 
 # ======================================================== #
+#                     Betterlockscreen
+# ======================================================== #
+
+sudo systemctl enable betterlockscreen@manhtq
+checkAndLogError $? "Failed to turn on betterlockscreen"
+
+# ======================================================== #
+
+
+# ======================================================== #
 #                        Ibus-Bamboo
 # ======================================================== #
 
