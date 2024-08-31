@@ -139,7 +139,7 @@ myKeyBindings =
 
     -- Lockscreen
     , ("M1-S-l", spawn "notify-send -u low 'Betterlockscreen' 'Reloading image' && betterlockscreen -u ~/.local/share/wallpapers && notify-send -u low 'Betterlockscreen' 'Reloaded image'")
-    , ("M-S-l", spawn "betterlockscreen -l blur --off 60")
+    , ("M-S-l", spawn "betterlockscreen -l --off 60")
     
     -- Fn Button (brightness, volume, media control)
     , ("<XF86AudioMute>", spawn "pactl set-sink-mute 0 toggle")
