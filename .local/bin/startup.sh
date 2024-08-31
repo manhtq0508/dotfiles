@@ -28,6 +28,7 @@ greenclip daemon &
 xfce4-power-manager &
 
 # Night light
+killall -q redshift redshift-gtk
 redshift &
 
 # Network Manager Applet
