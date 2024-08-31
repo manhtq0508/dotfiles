@@ -75,7 +75,7 @@ sudo pacman -Syu && sudo pacman -S --needed \
     xorg-xdpyinfo xorg-xrandr xorg-xrdb xorg-xset imagemagick \
     bc xfce4-power-manager libreoffice-fresh bluez-obex p7zip conky \
     libxext xorgproto xcb-util libxcb xcb-util-renderutil \
-    xcb-util-image pixman dbus libconfig pcre libev uthash
+    xcb-util-image pixman dbus libconfig pcre libev libevdev uthash
 checkAndLogError $? "Failed to install pacman packages"
 
 # Rust
