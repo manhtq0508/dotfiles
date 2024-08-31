@@ -58,7 +58,7 @@ export PATH="$PATH:/usr/local/bin:/usr/local/sbin:/opt/bin:$HOME/.local/bin:$HOM
 # Pacman
 echo -e "\e[32m [ INFO ] Installing pacman packages \e[0m"
 sudo pacman -Syu && sudo pacman -S --needed \
-    neofetch ripgrep fzf git base-devel bat \
+    neofetch ripgrep fzf git base-devel bat redshift \
     eza feh firefox github-cli kitty brightnessctl \
     xf86-input-libinput xorg-xinput imv libnotify \
     network-manager-applet nodejs npm nemo \
