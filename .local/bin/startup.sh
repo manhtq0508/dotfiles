@@ -29,6 +29,7 @@ xfce4-power-manager &
 
 # Night light
 # redshift-gtk -l 10.49:106.37 &
+# redshift -P -O 4700K
 
 # Network Manager Applet
 if [ -x /usr/bin/nm-applet ]; then
