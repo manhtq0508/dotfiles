@@ -138,6 +138,7 @@ myKeyBindings =
     , ("M-g", withFocused toggleBorder)
 
     -- Lockscreen
+    , ("M1-S-l", spawn "notify-send -u low 'Betterlockscreen' 'Reloading image' && betterlockscreen -u ~/.local/share/wallpapers && notify-send -u low 'Betterlockscreen' 'Reloaded image'")
     , ("M-S-l", spawn "betterlockscreen -l blur --off 60")
     
     -- Fn Button (brightness, volume, media control)
