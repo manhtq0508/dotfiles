@@ -11,11 +11,12 @@ xsetroot -cursor_name left_ptr
 
 # Polybar
 killall -q polybar
-polybar &
+polybar -c ~/.config/polybar/top_bar.ini &
+polybar -c ~/.config/polybar/bottom_bar.ini &
 
 # Set layout update
 killall -q update_layout.py
-~/.local/bin/update_layout.py &
+~/.config/polybar/scripts/update_layout.py &
 
 # Ibus-daemon
 ibus-daemon -rxRd

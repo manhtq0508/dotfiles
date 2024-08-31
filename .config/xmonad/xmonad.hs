@@ -56,6 +56,8 @@ main = xmonad
      . docks
      $ myConfig
 
+myWorkspaces' = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+
 -- ===================== Config =====================
 myConfig = def
     { modMask    = mod4Mask      -- Rebind Mod to the Super key
@@ -63,6 +65,12 @@ myConfig = def
     , manageHook = myManageHook  -- Match on certain windows
     , startupHook = myStartupHook
     , terminal = "kitty"
+    , focusFollowsMouse = False
+    , clickJustFocuses = False
+    , borderWidth = 2
+    , normalBorderColor = "#A89984"  -- Gray
+    , focusedBorderColor = "#FF0000" -- Red
+    , workspaces = myWorkspaces'
     }
   `additionalKeysP` myKeyBindings
   `additionalMouseBindings` myMouseBindings
@@ -72,11 +80,11 @@ myConfig = def
 -- ===================== ManageHook =====================
 myManageHook :: ManageHook
 myManageHook = composeAll
-    [ className =? "Gimp" --> doFloat
-    , className =? "Blueman-manager" --> doFloat
-    , className =? "pavucontrol" --> doFloat
-    , className =? "Conky" --> doIgnore
-    , isDialog            --> doFloat
+    [ className =? "Gimp"            --> doCenterFloat
+    , className =? "Blueman-manager" --> doCenterFloat
+    , className =? "pavucontrol"     --> doCenterFloat
+    , className =? "Conky"           --> doIgnore
+    , isDialog                       --> doFloat
     ]
 -- ===================== ManageHook =====================
 
@@ -85,6 +93,7 @@ myManageHook = composeAll
 myStartupHook :: X ()
 myStartupHook = do 
     spawnOnce "~/.local/bin/startup.sh"
+    spawnOnce "notify-send -u low 'Dunst' 'Welcome'"
 -- ===================== StartupHook =====================
 
 
