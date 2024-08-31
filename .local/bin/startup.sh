@@ -29,7 +29,6 @@ xfce4-power-manager &
 
 # Night light
 redshift &
-redshift-gtk &
 
 # Network Manager Applet
 if [ -x /usr/bin/nm-applet ]; then
