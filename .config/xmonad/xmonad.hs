@@ -94,6 +94,7 @@ myStartupHook :: X ()
 myStartupHook = do 
     spawnOnce "~/.local/bin/startup.sh"
     spawnOnce "notify-send -u low 'Dunst' 'Welcome'"
+    spawnOnce "betterlockscreen -u ~/.local/share/wallpapers"
 -- ===================== StartupHook =====================
 
 
@@ -124,6 +125,7 @@ myKeyBindings =
     , ("M-S-s", spawn "ksnip -r")
     , ("M-S-f", spawn "ksnip -m && notify-send -u low 'Ksnip' 'Full screen captured'")
     , ("C-S-<Space>", spawn "~/.config/rofi/launcher.sh")
+    , ("M-b", spawn "feh --bg-fill --no-fehbg --randomize ~/.local/share/wallpapers")
 
     -- Polybar
     , ("M-p", spawn "polybar-msg cmd restart")

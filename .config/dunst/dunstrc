@@ -6,7 +6,7 @@
 
     monitor = 0
     follow = mouse
-		width = 350
+		width = (350, 500)
     origin = top-right
     offset = 10x40
 
