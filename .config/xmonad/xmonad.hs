@@ -94,7 +94,6 @@ myStartupHook :: X ()
 myStartupHook = do 
     spawnOnce "~/.local/bin/startup.sh"
     spawnOnce "notify-send -u low 'Dunst' 'Welcome'"
-    spawnOnce "betterlockscreen -u ~/.local/share/wallpapers"
 -- ===================== StartupHook =====================
 
 
