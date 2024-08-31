@@ -210,7 +210,10 @@ echo -e "\e[32m [ INFO ] Enable Bluetooth service \e[0m"
 sudo modprobe btusb
 sudo systemctl enable bluetooth
 sudo systemctl start bluetooth
-checkAndLogError $? "Failed to enable Bluetooth service."
+systemctl --user start obex
+checkAndLogError $? "Failed to enable Bluetooth obex service."
+sudo systemctl --global enable obex
+checkAndLogError $? "Failed to enable Bluetooth obex service."
 
 # ======================================================== #
 
