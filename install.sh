@@ -24,7 +24,7 @@ fi
 # ======================================================== #
 
 # Log dir
-LOG_DIR="$HOME/dotfiles/logs.log"
+LOG_FILE="$HOME/dotfiles/logs.log"
 
 # Khởi tạo biến toàn cục
 errorCount=0
@@ -40,7 +40,7 @@ function checkAndLogError {
         errorMessages+=("$message")
         echo -e "\e[31m [ ERROR ] $message \e[0m"
     else
-        echo -e "\e[32m [ DONE ] \e[0m"
+        echo -e "\e[32m [ DONE ] Not $message \e[0m"
     fi
 }
 
@@ -130,11 +130,11 @@ checkAndLogError $? "Failed to clone zsh-syntax-highlighting"
 # Sao chép các file cấu hình .config, ~
 echo -e "\e[32m [ INFO ] Copy dotfiles and config files \e[0m"
 cd "$HOME/dotfiles"
-cp -rf .config "$HOME" | tee -a "$LOG_DIR"
+cp -rf .config "$HOME" | tee -a "$LOG_FILE"
 checkAndLogError $? "Failed to copy .config files"
-cp -rf home/.* "$HOME" | tee -a "$LOG_DIR"
+cp -rf home/.* "$HOME" | tee -a "$LOG_FILE"
 checkAndLogError $? "Failed to copy home files."
-cp -rf .local "$HOME" | tee -a "$LOG_DIR"
+cp -rf .local "$HOME" | tee -a "$LOG_FILE"
 checkAndLogError $? "Failed to copy .local files."
 
 # Git config
@@ -144,13 +144,13 @@ git config --global init.defaultBranch main
 
 # Cấu hình touchpad
 echo -e "\e[32m [ INFO ] Config touchpad (natural scrolling, tap, etc) \e[0m"
-sudo cp 30-touchpad.conf /etc/X11/xorg.conf.d/ | tee -a "$LOG_DIR"
+sudo cp 30-touchpad.conf /etc/X11/xorg.conf.d/ | tee -a "$LOG_FILE"
 checkAndLogError $? "Failed to configure touchpad."
 
 # Cấu hình module điều chỉnh độ sáng của Polybar
 echo -e "\e[32m [ INFO ] Rules for adjust brightness, power alert \e[0m"
-sudo usermod -aG video "$USER" | tee -a "$LOG_DIR"
-sudo cp -rf rules.d /etc/udev | tee -a "$LOG_DIR"
+sudo usermod -aG video "$USER" | tee -a "$LOG_FILE"
+sudo cp -rf rules.d /etc/udev | tee -a "$LOG_FILE"
 checkAndLogError $? "Failed to configure rules."
 
 # Load fontconfig
@@ -219,7 +219,7 @@ checkAndLogError $? "Failed to enable Bluetooth service."
 #                     Betterlockscreen
 # ======================================================== #
 
-betterlockscreen -u "$HOME/.local/share/wallpapers
+betterlockscreen -u "$HOME/.local/share/wallpapers"
 sudo systemctl enable betterlockscreen@manhtq
 checkAndLogError $? "Failed to turn on betterlockscreen"
 
@@ -267,11 +267,11 @@ checkAndLogError $? "Failed to update environment variables."
 
 # In thống kê lỗi
 if [ $errorCount -gt 0 ]; then
-    echo -e "\e[31m [ ERROR ] There were $errorCount errors during the script execution. \e[0m"
-    echo "Error details:"
+    echo -e "\e[31m [ ERROR ] There were $errorCount errors during the script execution. \e[0m" | tee -a "$LOG_FILE"
+    echo "Error details:" | tee -a "$LOG_FILE"
     for msg in "${errorMessages[@]}"; do
-        echo "- $msg"
+        echo "- $msg" | tee -a "$LOG_FILE"
     done
 else
-    echo -e "\e[32m [ INFO ] No errors encountered. \e[0m"
+    echo -e "\e[32m [ INFO ] No errors encountered. \e[0m" | tee -a "$LOG_FILE"
 fi
