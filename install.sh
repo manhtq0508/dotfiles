@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Note: Turn off "Transfer file" plugin of blueman to fix OBEX in bluetuith
+#       Turn on Notification in xfce4-power-manager-settings (Power Manager)
+
 # ======================================================== #
 #                 Kiểm tra trước cài đặt
 # ======================================================== #
