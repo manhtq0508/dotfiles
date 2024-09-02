@@ -110,7 +110,8 @@ yay -S --needed \
     rofi-greenclip \
     i3lock-color \
     betterlockscreen \
-    picom-ftlabs-git 
+    picom-ftlabs-git \
+    logiops
 checkAndLogError $? "Failed to install yay packages"
 
 # Cài đặt Oh My Zsh
@@ -149,6 +150,13 @@ git config --global init.defaultBranch main
 echo -e "\e[32m [ INFO ] Config touchpad (natural scrolling, tap, etc) \e[0m"
 sudo cp 30-touchpad.conf /etc/X11/xorg.conf.d/ | tee -a "$LOG_FILE"
 checkAndLogError $? "Failed to configure touchpad."
+
+echo -e "\e[32m [ INFO ] Config DPI \e[0m"
+sudo cp logid.cfg /etc | tee -a "$LOG_FILE"
+checkAndLogError $? "Failed to config DPI"
+echo -e "\e[32m [ INFO ] Turn DPI service on \e[0m"
+sudo systemctl enable logid
+checkAndLogError $? "Failed to turn on DPI service"
 
 # Cấu hình module điều chỉnh độ sáng của Polybar
 echo -e "\e[32m [ INFO ] Rules for adjust brightness, power alert \e[0m"
@@ -225,7 +233,6 @@ sudo systemctl start bluetooth
 #                     Betterlockscreen
 # ======================================================== #
 
-betterlockscreen -u "$HOME/.local/share/wallpapers"
 sudo systemctl enable betterlockscreen@manhtq
 checkAndLogError $? "Failed to turn on betterlockscreen"
 
