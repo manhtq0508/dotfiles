@@ -31,6 +31,9 @@ xfce4-power-manager &
 killall -q redshift redshift-gtk
 redshift &
 
+# Keyring
+gnome-keyring-daemon &
+
 # Network Manager Applet
 if [ -x /usr/bin/nm-applet ]; then
     nm-applet --sm-disable &
