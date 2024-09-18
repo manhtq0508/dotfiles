@@ -13,7 +13,7 @@ check_command "neofetch" "neofetch"
 
 # Oh My Zsh configuration
 export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="crcandy"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 zstyle ':omz:update' mode reminder
 zstyle ':omz:update' frequency 13
@@ -21,7 +21,7 @@ zstyle ':omz:update' frequency 13
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
-HIST_STAMPS="mm/dd/yyyy"
+HIST_STAMPS="dd/mm/yyyy"
 
 plugins=(
     git

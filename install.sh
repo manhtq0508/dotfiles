@@ -64,7 +64,7 @@ sudo pacman -Syu && sudo pacman -S --needed \
     neofetch ripgrep fzf git base-devel bat redshift \
     eza feh firefox github-cli kitty brightnessctl \
     xf86-input-libinput xorg-xinput imv libnotify \
-    network-manager-applet nodejs npm nemo \
+    network-manager-applet nodejs npm nemo gnome-keyring \
     polybar pulseaudio pulseaudio-bluetooth mupdf \
     python-pynvim rofi xdg-utils zoxide zsh acpi \
     noto-fonts noto-fonts-extra noto-fonts-emoji noto-fonts-cjk ttf-croscore \
@@ -123,6 +123,9 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$HOME/.
 checkAndLogError $? "Failed to clone zsh-autosuggestions."
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 checkAndLogError $? "Failed to clone zsh-syntax-highlighting"
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+checkAndLogError $? "Failed to clone powerlevel10k"
+
 
 # ======================================================== #
 
